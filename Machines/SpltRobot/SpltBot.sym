@@ -1,0 +1,108 @@
+# Software Version 6.5  (DO NOT EDIT THIS LINE)
+# io#  symbol       equip byte  bit length_in_bits
+# name 			Node 	Byte 	Bit 	Length 
+
+# Encoder Input Channels
+
+1 ENC_MechCH1
+0 ENC_MechCH2
+
+# Start of real inputs. 
+
+2 DI_KetopEnable	# Deadman enable button on Teach pendant
+3 DI_PendantEstop	# E-stop push button on Teach Pendant
+4 DI_WatchDogFail	# Watch Dog Timer Failed		
+5 DI_YPosOvrTrvl	# Y axis positive overtravel switch
+6 DI_YNegOvrTrvl	# Y axis negative overtravel switch
+7 DI_OperatorEstop	# Op panel e-stop	  	
+8 DI_RetractPB      	# Retract Push Button
+9 DI_SkipCarcPB 	# Skip carcass Push Button			
+#10  Spare
+11 DI_AutoModePB  	# Auto mode/ Cycle start push button
+12 DI_SanitizePB	# Sanitize push button       
+13 DI_BkupBrkPresOK	# Backup brake press okay
+14 DI_TrllyCylStart	# New non contact trolley switch
+15 DI_MasterCRisON	# MCR relay is on	
+16 DI_1SrOk		# 1 Safety relay okay 	
+17 DI_2SrOk 	 	# 2 Safety relay okay 	
+
+18 DI_SafeContrsOk	# Safety Contactors okay		
+19 DI_1ESrOk		# Safety E-Stop Relay okay
+20 DI_LghtCurtnAlrm	# Measuring Light Curtain Fault
+21 DI_BrakOvrRideON	# Brake override for Sa and Ab axes
+#22 DI_Spare
+23 DI_XNegOvrTrvl	# X Axis Negative overtravel
+24 DI_XPosOvrTrvl	# X Axis Positive overtravel
+25 DI_SawMotorFault	# Saw Motor Fault
+#26 DI_Spare
+#27 DI_Spare
+#28 DI_Spare
+29 DI_ArmsOpen		# Stabilizer Arms Opened
+30 DI_RollrRetrcted	# Backup rollers retracted
+31 DI_ArmsParked	# Stabilizer arms parked
+32 DI_TrllySwitch2	# Trolley cycle start switch
+#33 DI_Spare
+
+34 DI_ArmsClose
+35 DI_MachOneCut
+36 DI_RegisterShift
+37 DI_SkipHogAll
+#38 DI_Spare
+#39 DI_Spare
+#40 DI_Spare
+#41 DI_Spare
+
+# Begin real outputs 
+
+42 DO_DrvMainSupply	#Drive Mains enabled
+#43 DO_Spare
+#44 DO_Spare
+#45 DO_Spare
+46 DO_TeachMDBypass	# In teach bypass mode
+47 DO_DrvCntrlDsble	# Control power disable
+#48 DO_Spare
+#49 DO_Spare
+50 DO_AutoModeLP	# Auto mode lamp
+51 DO_ManualModeLP	# Manual indicator lamp
+52 DO_FaultLP		# DO_FaultLight
+53 DO_AutoModePBLP	# Auto mode push button lamp
+54 DO_SkpCrcssPBLP	# Skip carcass push button lamp
+55 DO_SanitizePBLP	# Sanitize push button lamp
+56 DO_SplitAirSol	# Air solonoid for split ram
+57 DO_SawSanitzeSol	# Saw side sanitize solonoid
+58 DO_StbArmsDnSol	# Stabilizer down Solonoid
+#59 DO_Spare
+60 DO_BkUpSanSol	# Backup sanitize solonoid
+61 DO_StbArmsUpSol	# Stabilizer up Solonoid
+62 DO_StabArmsOPSol	# Stabilizer open Solonoid
+63 DO_StabArmsClSol	# Stabilizer close Solonoid
+64 DO_RollerDoorUp	# Backup roller door up solonoid
+65 DO_BkupAirPmpSol	# Backup air pump solonoid
+66 DO_BkupBrakeSol	# Backup brake solonoid
+#67 DO_Spare
+#68 DO_Spare
+69 DO_SanitizeDrs	# Saw Head sanitize doors
+70 DO_MachCutting	# Machine cutting output
+#71 DO_Spare
+72 DO_RelseSaBrk	#release upper arm brake
+73 DO_RelseAbBrk	#release roller brake
+
+# Analog input channel
+
+#74 AI_LightCrtnAnlg	# Measuring light Curtain a nalog value
+#75 AI_Spare
+#76 AI_Spare
+#77 AI_Spare
+#78 AI_Spare
+#79 AI_Spare
+#80 AI_Spare
+#81 AI_Spare
+
+# Analog Output Channel
+
+#82 AO_BladeSpeed
+#83 AO_Spare
+#84 AO_Spare
+#85 AO_Spare
+
+

@@ -1,0 +1,541 @@
+# OpenCNC Version 7.2  (DO NOT EDIT THIS LINE)
+#
+###########################################################################
+# OpenCNC(R)
+# Copyright 1993-2002 by
+# Manufacturing Data Systems, Inc.(R)
+# All rights reserved.
+# http://www.mdsi2.com
+#
+# $Id: HPRobot.gen Exp $
+#
+# This is the generator file for a HPRobot machine.
+#
+# Messages handled by ISaGRAF message application:
+# (DIOM_ and DIOS_ symbols defined by the system, usable here)
+# (DIOU_ symbols used in ISaGRAF application, not usable here)
+#
+# Message type, parameters     Function
+# ------------------------      --------
+#   DIOM_MISCFUNC(1),
+#   DIOM_SYSTEM(2),
+#   DIOS_CSCHECK(1)             returns 0 (fail), or 1 (success)
+#   DIOS_EOP(2)                 end of program
+#   DIOS_JOG(3),lo,lo           type,axis
+#   DIOS_OSTOP(5)               M01, optional stop
+#   DIOS_SEQCALCRST(7),lo       reset sequencer for JID 'lo'
+#   DIOS_SEQCALCRUN(8),lo       clear stop bit in sequencer for JID 'lo'
+#   DIOS_STOP(10)               M00, program stop
+#   DIOS_STOPS(11)              ignored, null reply
+#   DIOS_MODECHG(24),lo,lo      new mode, old mode  (MODE_JOG, ...)
+#   DIOM_USER(3),
+#   2(DIOU_SYNC)                sync machine
+#   3(DIOU_CYCLESTART)          cycle start
+#   4(DIOU_FEEDHOLD)            feed hold
+#   5(DIOU_MODESET),lo          set mode (MODE_JOG, MODE_RUN, ...)
+#   7(DIOU_JOGMULT),lo,lo,...   jog (one or) multiple axes
+#
+###########################################################################
+
+[winGen]
+
+TITLE("HPRobot Operator Panel");
+
+RECT(1, 1)
+{
+  LINE("FPM%");
+  FEEDOVERRIDE(0, 1, "<<< SLOW OVERRIDE FPM >>>", MINBUTTON, 0.01, "FPM");
+}
+
+RECT(+5, +0)
+{
+  LINE("$$$ <              >", jsFeedOverride[0]*100, <jsFeedOverride[0], 2.0 >);
+  FEEDOVERRIDE(0, 0, "<<< OVERRIDE FPM >>>", MINBUTTON, 0.05, "FPM");
+}
+
+RECT(+22, +0)
+{
+  LINE("$$$$$", slideDelText);
+
+  MENU(
+    "Slide Override FPM", ASSIGN(jsTlFeedOvRideOn[0], 0);
+    "Delta Override FPM", ASSIGN(jsTlFeedOvRideOn[0], 1);
+    );
+
+  TEXT(
+    jsTlFeedOvRideOn[0], 0, "SLIDE", slideDelText;
+    jsTlFeedOvRideOn[0], 1, "DELTA", slideDelText;
+    );
+
+  COLOR(
+    DEFAULT, GRAY;                  # delta and offset# > 0
+    jsTlFeedOvRideOn[0], 0, WHITE;  # slider
+    jsToolLenOffNum[0],  0, WHITE;  # delta and offset# = 0
+    );
+}
+
+RECT(1, +2)
+{
+  LINE("Rap%");
+  SLIDE(mRapidOverride, 1, 0.0, 1.0, "<<< SLOW OVERRIDE RAPID >>>", MINBUTTON);
+}
+
+RECT(+5, +0)
+{
+  LINE("$$$ <          >           ", mRapidOverride*100, <mRapidOverride, 1.0 >);
+  SLIDE(mRapidOverride, 0, 0.0, 1.0, "<<< OVERRIDE RAPID >>>", MINBUTTON);
+}
+
+RECT(1, +2)
+{
+  LINE("Jog%");
+  SLIDE(mJogOverride, 1, 0.0, 1.0, "<<< SLOW OVERRIDE JOG >>>", MINBUTTON);
+}
+
+RECT(+5, +0)
+{
+  LINE("$$$ <          >           ", mJogOverride*100, <mJogOverride, 1.0 >);
+  SLIDE(mJogOverride, 0, 0.0, 1.0, "<<< OVERRIDE JOG >>>", MINBUTTON);
+}
+
+RECT(1, +2)
+{
+  LINE(" Opt Stop");
+  LINE("   $$$$", opStopText);
+
+  MENU(
+    "Off",       ASSIGN(mOptionalStopOn, 0);
+    "On",        ASSIGN(mOptionalStopOn, 1);
+    "Locked On", ASSIGN(mOptionalStopOn, 2);
+    );
+
+  TEXT(
+    mOptionalStopOn, 2, "LOCK", opStopText;
+    mOptionalStopOn, 1, " ON",  opStopText;
+    mOptionalStopOn, 0, "OFF",  opStopText;
+    );
+
+  COLOR(
+    DEFAULT, RED;
+    mOptionalStopOn, 0, GREEN;
+    );
+}
+
+RECT(+11, +0)
+{
+  LINE("Block Del ");
+  LINE("   $$$", blockDelText);
+
+  MENU(
+    "Off", ASSIGN(mBlockDeleteReq, 0);
+    "On",  ASSIGN(mBlockDeleteReq, 1);
+    );
+
+  TEXT(
+    mBlockDeleteReq, 1, " ON", blockDelText;
+    mBlockDeleteReq, 0, "OFF", blockDelText;
+    );
+
+  COLOR(
+    DEFAULT, RED;
+    mBlockDeleteReq, 0, GREEN;
+    );
+}
+
+RECT(+11, +0)
+{
+  LINE(" EOB Stop ");
+  LINE("   $$$$", singleBlkText);
+
+  MENU(
+    "Off", ASSIGN(mSingleBlockOn, 0);
+    "On",  ASSIGN(mSingleBlockOn, 1);
+    );
+
+  TEXT(
+    mSingleBlockOn, 1, " ON", singleBlkText;
+    mSingleBlockOn, 0, "OFF", singleBlkText;
+    );
+
+  COLOR(
+    DEFAULT, RED;
+    mSingleBlockOn, 0, GREEN;
+    );
+}
+
+RECT(1, +3)
+{
+  LINE("");
+  LINE("^ Cycle $$$", onoff);  # ^ = shift up 1/2 line
+
+  MENU(
+    "Cycle Start", MSG(DIOM_USER, 3);   # DIOU_CYCLESTART
+    );
+
+  TEXT(
+    # ISaGRAF program SetState():
+    #  genCycleOn := (mRunMode = MODE_RUN) AND
+    #                (NOT seqrTest(0, SEQR_STOP)) AND
+    #                (NOT mFeedHold) AND (mFailHold = 0);
+    genCycleOn, 1, "ON",  onoff;        # Run mode, not stopped or feedhold
+    genCycleOn, 0, "OFF", onoff;
+
+    );
+
+  COLOR(
+    # GREEN if cycle is on (see above)
+    # RED   otherwise
+    DEFAULT, RED;
+    genCycleOn, 1, GREEN;
+    );
+}
+
+RECT(+17, +0)
+{
+  LINE("");
+  LINE("^  Feedhold $$$ ", feedText);
+
+  MENU(
+    "Feedhold", MSG(DIOM_USER, 4);      # DIOU_FEEDHOLD
+    );
+
+  TEXT(
+    mFeedHold, 1, "ON",  feedText;
+    mFeedHold, 0, "OFF", feedText;
+    );
+
+  COLOR(
+    DEFAULT, GREEN;
+    mFeedHold, 1, RED;
+    );
+}
+
+RECT(1, +3)
+{
+  LINE(" $$$$$$$ ", cmdModeText);
+  LINE("  Mode");
+
+  MENU(
+    "Manual",   CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 5, MODE_JOG);        # 5 = DIOU_MODESET
+    "MDI",      CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 5, MODE_MDI);        # 5 = DIOU_MODESET
+    "Auto",     CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 5, MODE_RUN);        # 5 = DIOU_MODESET
+    "Retrace",  CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 5, MODE_RETRACE);    # 5 = DIOU_MODESET
+    "Withdraw", CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 5, MODE_WITHDRAW);   # 5 = DIOU_MODESET
+    "Auto Withdraw",
+                CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 5, MODE_AUTOWDRAW);  # 5 = DIOU_MODESET
+    );
+
+  TEXT(
+    mRunMode, MODE_JOG,       "MANUAL",  cmdModeText;
+    mRunMode, MODE_MDI,       " MDI ",   cmdModeText;
+    mRunMode, MODE_RUN,       " AUTO",   cmdModeText;
+    mRunMode, MODE_RETRACE,   "RETRACE", cmdModeText;
+    mRunMode, MODE_WITHDRAW,  "WITHDRW", cmdModeText;
+    mRunMode, MODE_AUTOWDRAW, "AUTWDRW", cmdModeText;
+    );
+}
+
+RECT(+11, +0)
+{
+  HIDEONRUN;
+
+  LINE("   Jog   ");
+  LINE("  ###### ", jogTypeText);
+
+  MENU(
+    # during feed CLEARACTIVE will fail and following commands are cancelled
+    "Off",      CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN;       # close slide/delta/override windows
+#    "RapidPoint",
+#                CLEARACTIVE:    # reset sequencers, remove feed hold
+#                CLOSEWIN:     # close slide/delta/override windows
+#                MSG(DIOM_USER, 10);    # DIOU_RAPIDPT
+#    "FeedPoint",
+#                CLEARACTIVE:    # reset sequencers, remove feed hold
+#                CLOSEWIN:     # close slide/delta/override windows
+#                MSG(DIOM_USER, 11);    # DIOU_FEEDPT
+    "SetMap100",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:     # close slide/delta/override windows
+                ASSIGN(dioMapReq, 0) : ASSIGN(DIOR_SETMAP, 1);    # Call Set map in Dio Project
+    "SetMap101",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:     # close slide/delta/override windows
+                ASSIGN(dioMapReq, 1) : ASSIGN(DIOR_SETMAP, 1);    # Call Set map in Dio Project
+
+    "Slide",    SHOWONCMP(jsMapSelect[0]], 0):
+                SELECTSLIDE(prJogRate, 0, -1.0, 1.0, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp));
+    "Slide",    HIDEONCMP(jsMapSelect[0]], 0):
+                SELECTSLIDE(prJogRate, 0, -1.0, 1.0, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta));
+
+# inch mode menu (not metric)
+    "Delta           >",
+       SHOWONCMP(mDisplayInch, 1):
+       MENU(
+
+# jsMapSelect[0]=0 just angle deltas
+      "Set Degrees...", SHOWONCMP(jsMapSelect[0]], 0):
+      CLEARACTIVE:    # reset sequencers, remove feed hold
+      CLOSEWIN:       # close slide/delta/override windows
+      SELECTDELTA(
+        PROMPTPARSE("Enter delta degrees:", plcJogAngle, 100, 3600000), AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "10.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(10.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "30.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(30.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "45.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(45.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "60.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(60.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "90.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(90.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+
+# jsMapSelect[0]=1 angle deltas and dist deltas
+      "Set Degrees...", SHOWONCMP(jsMapSelect[0]], 1):
+      CLEARACTIVE:    # reset sequencers, remove feed hold
+      CLOSEWIN:       # close slide/delta/override windows
+      SELECTDELTA(
+        PROMPTPARSE("Enter delta degrees:", plcJogAngle, 100, 3600000), AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "10.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(10.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "30.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(30.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "45.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(45.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "60.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(60.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "90.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(90.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+
+      "Set Delta...", SHOWONCMP(jsMapSelect[0]], 1):
+      CLEARACTIVE:    # reset sequencers, remove feed hold
+      CLOSEWIN:       # close slide/delta/override windows
+      SELECTDELTA(
+          PROMPTDIST("Enter delta inch:", plcJogDist, 100, 50800000), AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      "1.0000 in", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA(1.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      "0.1000 in", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA(0.1000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      "0.0100 in", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA(0.0100, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      "0.0010 in", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA(0.0010, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      "0.0001 in", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA(0.0001, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      );
+
+# metric mode menu (not inch)
+    "Delta           >",
+       SHOWONCMP(mDisplayInch, 0):
+       MENU(
+
+# jsMapSelect[0]=0 just angle deltas
+      "Set Degrees...", SHOWONCMP(jsMapSelect[0]], 0):
+      CLEARACTIVE:    # reset sequencers, remove feed hold
+      CLOSEWIN:       # close slide/delta/override windows
+      SELECTDELTA(
+        PROMPTPARSE("Enter delta degrees:", plcJogAngle, 100, 3600000), AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "10.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(10.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "30.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(30.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "45.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(45.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "60.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(60.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+      "90.0000 deg", SHOWONCMP(jsMapSelect[0]], 0):SELECTDELTA(90.0000, AXISHIDE(Xp, Yp, Zp, Ap, Bp, Cp, Xb, Yb));
+
+# jsMapSelect[0]=1 angle deltas and dist deltas
+      "Set Degrees...", SHOWONCMP(jsMapSelect[0]], 1):
+      CLEARACTIVE:    # reset sequencers, remove feed hold
+      CLOSEWIN:       # close slide/delta/override windows
+      SELECTDELTA(
+        PROMPTPARSE("Enter delta degrees:", plcJogAngle, 100, 3600000), AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "10.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(10.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "30.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(30.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "45.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(45.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "60.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(60.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+      "90.0000 deg", SHOWONCMP(jsMapSelect[0]], 1):SELECTDELTA(90.0000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Xp, Yp, Zp, Xb, Yb));
+
+      "Set Delta...", SHOWONCMP(jsMapSelect[0]], 1):
+      CLEARACTIVE:    # reset sequencers, remove feed hold
+      CLOSEWIN:       # close slide/delta/override windows
+      SELECTDELTA(
+          PROMPTDIST("Enter delta mm:", plcJogDist, 100, 50800000), AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      "10.000 mm", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA(10.000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      " 1.000 mm", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA( 1.000, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      " 0.100 mm", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA( 0.100, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      " 0.010 mm", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA( 0.010, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      " 0.001 mm", SHOWONCMP(jsMapSelect[0]], 1): SELECTDELTA( 0.001, AXISHIDE(Sa, La, Ua, Ra, Ba, Ta, Ap, Bp, Cp, Ab));
+      );
+
+    "Jog Home",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 63, axLocHome[0], axLocHome[1], axLocHome[2],
+                                         axLocHome[3], axLocHome[4], axLocHome[5]);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axes all
+    "Jog Absolute Sa..",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Sa:")):
+                # if PROMPTDIST cancelled, nothing changed
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 1, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 1 = Sa axis (#0)
+    "Jog Absolute La..",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute La:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 2, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 2 = La axis (#1)
+    "Jog Absolute Ua..",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Ua:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 4, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 4 = Ua axis (#2)
+    "Jog Absolute Ra..",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Ra:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 8, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 8 = Ra axis (#3)
+    "Jog Absolute Ba..",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Ba:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 16, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 16 = Ba axis (#4)
+    "Jog Absolute Ta..",
+                SHOWONCMP(jsMapSelect[0]], 0):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Ta:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 32, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 32 = Ta axis (#5)
+    "Jog Absolute Xp..",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTDIST("Enter new absolute Xp:")):
+                # if PROMPTDIST cancelled, nothing changed
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 64, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 64 = Xp axis (#6)
+    "Jog Absolute Yp..",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTDIST("Enter new absolute Yp:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 128, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 128 = Yp axis (#7)
+    "Jog Absolute Zp..",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTDIST("Enter new absolute Zp:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 256, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 256 = Zp axis (#8)
+    "Jog Absolute Ap..",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Ap:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 512, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 512 = Ap axis (#9)
+    "Jog Absolute Bp..",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Bp:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 1024, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 1024 = Bp axis (#10)
+    "Jog Absolute Cp..",
+                SHOWONCMP(jsMapSelect[0]], 1):
+                CLEARACTIVE:    # reset sequencers, remove feed hold
+                CLOSEWIN:       # close slide/delta/override windows
+                ASSIGN(genTempLong, PROMPTPARSE("Enter new absolute Cp:")):
+                MSG(DIOM_USER, 4):      # DIOU_FEEDHOLD
+                MSG(DIOM_USER, 7, 0, 2048, genTempLong);
+                # func = 7 = DIOU_JOGMULT
+                # type = 0 = absolute jog
+                # axis = 2048 = Cp axis (#11)
+      );
+
+  TEXT(
+    plcJogType, JOG_OFF,   " OFF",     jogTypeText;
+    plcJogType, JOG_DELTA, plcJogDist, jogTypeText;
+    plcJogType, JOG_SLIDE, "SLIDE",    jogTypeText;
+    );
+
+  COLOR(
+    DEFAULT, RED;
+    plcJogType, JOG_OFF, GREEN;
+    );
+}
+
+RECT(+12, +0)
+{
+  HIDEONRUN;
+
+  LINE("Start Up ");
+  LINE("$$$$$$$$ ", startUpText);
+
+  MENU(
+    "Machine Enable",  CLOSEWIN: # close slide/delta/override windows
+                       MSG(DIOM_USER, 1, 1); # DIOU_ENERGIZE
+
+    *"",               ASSIGN(z, 0);             // Used for Spacer
+
+    "Sync",            SHOWONCMP(mRunMode, MODE_JOG):
+                       CLOSEWIN:     # close slide/delta/override windows
+                       MSG(DIOM_USER, 2);    # DIOU_SYNC
+
+    *"",               ASSIGN(z, 0);             // Used for Spacer
+    
+    "Machine Disable", CONFIRM("Disable Machine -- OK?"):
+                       CLOSEWIN:     # close slide/delta/override windows
+                       MSG(DIOM_USER, 1, 0); # DIOU_ENERGIZE
+    );
+
+  TEXT(
+    genMachState, 1, " NO SYNC", startUpText;
+    genMachState, 2, " SYNCING", startUpText;
+    genMachState, 3, "  READY",  startUpText;
+    );
+
+  COLOR(
+    DEFAULT, BLINK;
+    genMachState, 3, GREEN;  # READY - Sync done and axes energized
+    );
+}

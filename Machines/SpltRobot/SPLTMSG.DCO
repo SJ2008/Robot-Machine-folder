@@ -1,0 +1,35 @@
+#A[16]%+X0000%axDistParseIn%%I0%0%CNC:
+#A[16]%+X0000%axDistParseOut%%I0%0%CNC:
+#A[9]%+X0000%axLoc%%I0%0%CNC:
+#A[16]%+X0000%axLocAbsMax%%I0%0%CNC:
+#A[16]%+X0000%axLocAbsMin%%I0%0%CNC:
+#A[16]%+X0000%axRotaryWrap%%I0%0%CNC:
+#A[16]%+X0000%axVelMax%%F0%0%CNC:
+#A[1]%+X0000%defAccelMax%%F0%0%CNC: See variable dictionary
+#A[1]%+X0000%defAxisCount%%I0%0%CNC: Number of axes
+#A[1]%+X0000%defJerkMax%%F0%0%CNC: See Variable Dictionary
+#A[1]%+X0000%dioAccelMax%%F0%0%DIO: 
+#A[1]%+X0000%dioBkUpRollReq%%I0%0%DIO: Request for backup roller change
+#A[1]%+X0000%dioCandidateID%%I0%0%DIO:
+#A[1]%+X0000%dioJerkMax%%F0%0%DIO:
+#A[1]%+X0000%dioJobStrmID%%I0%0%Job stream selected variable
+#A[1]%+X0000%dioMessageCount%%I0%0%Count of messages received
+#A[1]%+X0000%dioMotionSeg%%I0%0%DIO:
+#A[1]%+X0000%dioSanitizeReq%%I0%0%DIO:
+#A[1]%+X0000%genMachState%%I0%0%DIO: 0=no servo, 1=enabling, 2=no sync, 3=syncing, 4=ready
+#A[8]%+X0000%jsAccelMax%%F0%0%CNC: See variable dictionary
+#A[8]%+X0000%jsInchMode%%I0%0%CNC:
+#A[8]%+X0000%jsJerkMax%%F0%0%CNC: See Variable dictionary
+#A[8]%+X0000%jsMapIndex%%I0%0%CNC:
+#A[8]%+X0000%jsMapRIndex%%I0%0%CNC:
+#A[1]%+X0000%mFailHold%%I0%0%CNC:
+#A[1]%+X0000%mRunMode%%I0%0%CNC:
+#A[16]%+X0000%plcJogMult%%I0%0%CNC:
+#A[16]%+X0000%prDistParseIn%%I0%0%CNC:
+#A[16]%+X0000%prDistParseOut%%I0%0%CNC:
+#A[16]%+X0000%prLoc%%I0%0%CNC:
+#A[16]%+X0000%prLocAbsMax%%I0%0%CNC:
+#A[16]%+X0000%prLocAbsMin%%I0%0%CNC:
+#A[16]%+X0000%prRotaryWrap%%I0%0%CNC:
+#A[16]%+X0000%prVelMax%%F0%0%CNC:
+

@@ -1,0 +1,674 @@
+
+# OpenCNC Version 7.2  (DO NOT EDIT THIS LINE)
+
+[accMsg]
+
+####################### Machine Initialization
+
+#defFakeMachine     	     1            	# fake machine, comment out for real machine
+#defFakeInterrupt   	     1            	# fake using RTX timer 500 intr/sec
+#defUseRtxTimer     	     1
+#defDisablePcCard   	     1            	# fake not accessing the hardware
+#defParseComments    	     1
+
+# 1=enable system message to PLC, 0=disable message
+defDiosCSCheck      	     1            	# enable DIOS_CSCHECK message
+defDiosEop          	     1            	# enable DIOS_EOP message
+#defDiosJog2Run     	     1            	# enable DIOS_JOG2RUN message
+defDiosModeChg      	     1            	# enable DIOS_MODECHG message
+defDiosOstop        	     1            	# enable DIOS_OSTOP message
+#defDiosRun2Jog     	     1            	# enable DIOS_RUN2JOG message
+#defDiosSoftStart   	     1            	# enable DIOS_SOFTSTART message
+defDiosStop         	     1            	# enable DIOS_STOP message
+#defDiosStops       	     1            	# enable DIOS_STOPS message
+#defDiosTlchg       	     1            	# enable DIOS_TLCHG message
+#defDiosTlsel       	     1            	# enable DIOS_TLSEL message
+defDiosSetMap       	     1            	# allow program map switching
+defOpCompNoStop	    	     1
+defFixTLOffImmed    	     1			# all axes move to new offset location
+
+defAxisCount    	     9
+defIntPerSec      	   500             	# interrupts per second for servo loop
+defDioCycleRate     	     0.010 sec     	# DIO/ISaGRAF cycle time
+
+defIOCycleRate[0]    	     1
+defIOCycleCheck[0]  	     1
+defIOCycleRate[1]   	     0.020sec
+defIOCycleCheck[1]  	     1
+ioEnetMxErrCyc[0]   	     2
+#defHandWJS[0] 		     1		   	# Move hand wheel to jobstream 1
+
+
+defCheckBits       	    -1             	# 0x80 to turn on FE check
+                                           	# 0x01 check Tech80 interval timer error
+                             		   	# 0x02 check Tech80 IPack error
+
+###### hand wheel 0 for robot Xptracking#######################
+
+defHandWJS[0] 		     0		   	# Move hand wheel to jobstream 1
+defHandWNum[0]	         70.50in	   	# Distance the chain moves during 1 encoder rev
+defHandWDen[0] 		100000
+defHandWIn[0]	   	    -1	
+defHandWOut[0]	    	     0			# Hand wheel zero will move Xp
+
+###### hand wheel 1 for backup Xb tracking#######################
+
+defHandWJS[1] 		     1		   	# Move hand wheel to jobstream 1
+defHandWNum[1]	         70.50in	   	# Distance the chain moves during 1 encoder rev
+defHandWDen[1] 		100000
+defHandWIn[1]	   	    -1	
+defHandWOut[1]	    	     6	
+
+#added initial poundVariable for the Gcode
+
+poundVariables[0]     1971			#X Robot horizon X offset
+poundVariables[20]   -1500			#Z tail punch depth base on new blade(base on new blade 18.5)
+poundVariables[22]   -1380			#Z depth on end of the straingh cut(base on new blade 18.5)
+
+
+
+mechSensorOn[0]     	     1
+mechSensorOn[1]     	     1
+mechSensorOn[2]     	     1
+mechSensorOn[3]     	     1
+mechSensorOn[4]     	     1
+mechSensorOn[5]     	     1
+mechSensorOn[6]     	     1
+mechSensorOn[7]     	     1
+mechSensorOn[8]     	     1
+
+mechSensorOn[9]     	     1			#Comment out without Saw head
+
+dioNumNetwrkDrvs    	    10
+dioUseAbsPosFdbk    	     1
+
+dioHydLoTime		     9 sec	   	# used for hydraulic error timeout when energizing brakes
+
+jsMapRIndex[0]     	    16
+
+# These letters name the machine axes
+axLetters[0]       	    Sa
+axLetters[1]       	    La
+axLetters[2]       	    Ua
+axLetters[3]       	    Ra
+axLetters[4]       	    Ba
+axLetters[5]       	    Ta
+axLetters[6]       	    Xb			#Backup Station X Axis
+axLetters[7]       	    Yb			#Backup Station Y Axis
+axLetters[8]       	    Ab			#Backup Station Rollers
+
+
+
+# These letters are for programming and name the columns in winOff and winFix
+prLetters[0]       	    Sa
+prLetters[1]       	    La
+prLetters[2]       	    Ua
+prLetters[3]       	    Ra
+prLetters[4]       	    Ba
+prLetters[5]       	    Ta
+prLetters[6]       	    Xb
+prLetters[7]       	    Yb
+prLetters[8]       	    Ab
+						#intentionally left open for sawblade
+
+prLetters[10]       	    Xp
+prLetters[11]       	    Yp
+prLetters[12]       	    Zp
+prLetters[13]       	    Ap
+prLetters[14]      	    Bp
+prLetters[15]      	    Cp
+
+
+
+prIJKLetters[10]     	     I
+prIJKLetters[11]     	     J
+prIJKLetters[12]     	     K
+
+# Define system resolution
+defDecimalShift     	     0           	# 0=0.0001 in, 0.001 mm
+defInchModeDflt     	     0           	# 1=default to inch mode, 0=default to mm
+
+# Encoder ticks per encoder rev
+encCountPerRev[0]       131072
+encCountPerRev[1]       131072
+encCountPerRev[2]       131072
+encCountPerRev[3]       131072
+encCountPerRev[4]       131072
+encCountPerRev[5]       131072
+encCountPerRev[6]       262144
+encCountPerRev[7]       262144
+encCountPerRev[8]       262144
+encCountPerRev[9]       262144  		#Comment out without Saw head
+
+# Max DAC output
+dacVoltMax[0]          9000000
+dacVoltMax[1]          9000000
+dacVoltMax[2]          9000000
+dacVoltMax[3]          9000000
+dacVoltMax[4]          9000000
+dacVoltMax[5]          9000000
+dacVoltMax[6]          9000000 
+dacVoltMax[7]          9000000 
+dacVoltMax[8]          9000000 
+dacVoltMax[9]         14000000 			#Comment out without Saw head
+
+# Physical axis tuning variables
+axFErrGain[0]		    9 			# S axis gain
+axFErrGain[1]		    9			# L axis gain
+axFErrGain[2]	            9 			# U axis gain
+axFErrGain[3]		    9 			# R axis gain
+axFErrGain[4]		    9 			# B axis gain
+axFErrGain[5]		    9 			# T axis gain
+axFErrGain[6]		   .50			# Xb axis gain
+axFErrGain[7]		     5			# Yb axis gain
+axFErrGain[8]		    15			# Ab axis gain
+axFErrGain[9]		     1			# Spindle axis gain Comment out without Saw head
+
+# Maximum amount of following error allowed
+axFErrMaxAllowed[0]	     2.0 in
+axFErrMaxAllowed[1]	     2.0 in
+axFErrMaxAllowed[2]	     2.0 in
+axFErrMaxAllowed[3]	     2.0 in
+axFErrMaxAllowed[4]	     2.0 in
+axFErrMaxAllowed[5]	     2.0 in
+axFErrMaxAllowed[6]	     6.0 in
+axFErrMaxAllowed[7]	     3.0 in
+axFErrMaxAllowed[8]	     2.0 in
+axFErrMaxAllowed[9]	    10.0 in		#Comment out without Saw head
+
+axFErrMaxAllowed[10]	     2.0 in		# XP Axis
+axFErrMaxAllowed[11]	     2.0 in		# YP Axis
+axFErrMaxAllowed[12]	     2.0 in		# ZP Axis
+axFErrMaxAllowed[13]	     2.0 in		# AP Axis
+axFErrMaxAllowed[14]	     2.0 in		# BP Axis
+axFErrMaxAllowed[15]	     2.0 in		# CP Axis
+
+# Time in mseconds that axes can have following error before alarm
+dioLagErrMaxTime	   200
+dioPRLagErrMaxT		   200
+
+defAccelMax              2000.0
+defJerkMax                 12.0
+
+jsAccelMax[0] 		   700			# Jobstream  accelerations
+jsJerkMax[0] 		     4	
+jsAccelMax[1]		   700	 
+jsJerkMax[1] 		     4	
+jsAccelMax[2]		   900	 
+jsJerkMax[2] 		     5	
+
+dioAccelMax		  900 			# Max Acceleration while jogging
+dioJerkMax		    6	
+
+defMapSYLen                650.0 mm
+defMapSZLen                285.0 mm
+defMapLYLen               1150.0 mm
+defMapUYLen                250.0 mm
+defMapUZLen               1225.0 mm
+defMapBZLen                225.0 mm
+
+#dioMapNum45		 -60000
+defMapNum45             -60000  #
+defMapDen45             1800000 #900000
+
+#dioMapNum34		-75499	
+defMapNum34	        -75499	 #  40000
+defMapDen34            3600000   #1800000
+
+#dioMapNum35		-105000
+defMapNum35            -105000	 #=103180	#-100804 	#50000
+defMapDen35            3600000	 #1800000
+
+
+
+axSyncOffset[0]          -6271	#S axis offset
+axSyncOffset[1]            103	#L axis offset
+axSyncOffset[2]         -14150	#U axis offset
+axSyncOffset[3]       	   285  #R axis offset
+axSyncOffset[4]         -21506 #16314	#B axis offset
+axSyncOffset[5]        	 30550	#8760  #T axis offset
+axSyncOffset[6]         311400	#Xb axis offset	(Backup station)
+axSyncOffset[7]        	125300	#Yb axis offset	(Backup station)
+axSyncOffset[8]         -28811	#-79984	#Ab axis offset	(Backup station)
+
+axSyncOffset[9]              0
+
+###################### End effector dimensions
+defMapTlXLen                 0.0 in	
+defMapTlYLen                31.0 in
+defMapTlZLen               -11.0 in
+
+####################### Programming space data
+prOpCompVelMax[10]	185000			# Vel max Xp following the conveyor
+prVelMax[10]            185000 			#Xp
+jsPrRI[0][0]                10
+
+prVelMax[11]            185000 			#Yp
+jsPrRI[0][1]                11
+
+prVelMax[12]            185000  		#Zp
+jsPrRI[0][2]                12
+
+prVelMax[13]            185000  		#Ap
+prDistParseIn[13]          360 deg
+prDistParseOut[13]         200 in
+jsPrRI[0][3]                13
+
+prVelMax[14]            185000   		#Bp
+prDistParseIn[14]          360 deg
+prDistParseOut[14]         150 in
+jsPrRI[0][4]                14
+
+prVelMax[15]            185000   		#Cp
+prDistParseIn[15]          360 deg
+prDistParseOut[15]         130 in
+jsPrRI[0][5]                15
+
+####################### Axis control data
+
+axLocHome[0]                 0 deg     		# Sa
+axLocAbsMin[0]            -120 deg
+axLocAbsMax[0]             120 deg
+axConvertDist[0]       1800000 			#180 deg	
+axConvertTicks[0]      3440640 		
+axVelMax[0]                100 deg/sec
+prVelMax[0]                100 deg/sec
+axDistParseIn[0]           360 deg
+prDistParseIn[0]           360 deg
+axDistParseOut[0]           10 in
+prDistParseOut[0]           10 in
+jsPrI[0][0]                  0
+jsAxI[0][0]                  0
+
+axLocHome[1]                 0 deg     		# La
+axLocAbsMin[1]             -90 deg
+axLocAbsMax[1]             135 deg
+axConvertDist[1]       1360000 			#136 deg
+axConvertTicks[1]      2602200 
+axVelMax[1]                100 deg/sec
+prVelMax[1]                100 deg/sec
+axDistParseIn[1]           360 deg
+prDistParseIn[1]           360 deg
+axDistParseOut[1]           10 in
+prDistParseOut[1]           10 in
+jsPrI[0][1]                  1
+jsAxI[0][1]                  1
+
+axLocHome[2]                 0 deg     		# Ua
+axLocAbsMin[2]            -100 deg
+axLocAbsMax[2]             180 deg
+axConvertDist[2]       3725000         		#372.5 deg
+axConvertTicks[2]      6236484         
+
+axVelMax[2]                100 deg/sec
+prVelMax[2]                100 deg/sec
+axDistParseIn[2]           360 deg
+prDistParseIn[2]           360 deg
+axDistParseOut[2]           10 in
+prDistParseOut[2]           10 in
+jsPrI[0][2]                  2
+jsAxI[0][2]                  2
+
+axLocHome[3]                 0 deg     		# Ra
+axLocAbsMin[3]            -180 deg
+prLocAbsMin[3]            -180 deg
+axLocAbsMax[3]             180 deg
+prLocAbsMax[3]             180 deg
+axRotaryWrap[3]              1
+prRotaryWrap[3]              1
+axConvertDist[3]       3600000         		#360 deg
+axConvertTicks[3]      5429688        
+axVelMax[3]                200 deg/sec
+prVelMax[3]                200 deg/sec
+axDistParseIn[3]           360 deg
+prDistParseIn[3]           360 deg
+axDistParseOut[3]           10 in
+prDistParseOut[3]           10 in
+jsPrI[0][3]                  3
+jsAxI[0][3]                  3
+
+axLocHome[4]                 0 deg     		# Ba
+axLocAbsMin[4]            -125 deg
+axLocAbsMax[4]             125 deg
+axConvertDist[4]       1300000         		#130 deg
+axConvertTicks[4]      1781328         
+axVelMax[4]                200 deg/sec
+prVelMax[4]                200 deg/sec
+axDistParseIn[4]           360 deg
+prDistParseIn[4]           360 deg
+axDistParseOut[4]           10 in
+prDistParseOut[4]           10 in
+jsPrI[0][4]                  4
+jsAxI[0][4]                  4
+
+axLocHome[5]                 0 deg     		# Ta
+axLocAbsMin[5]            -180 deg
+prLocAbsMin[5]            -180 deg
+axLocAbsMax[5]             180 deg
+prLocAbsMax[5]             180 deg
+axRotaryWrap[5]              1
+prRotaryWrap[5]              1
+axConvertDist[5]       3600000       		#360 deg
+axConvertTicks[5]      3166800       
+axVelMax[5]                200 deg/sec
+prVelMax[5]                200 deg/sec
+axDistParseIn[5]           360 deg
+prDistParseIn[5]           360 deg
+axDistParseOut[5]           10 in
+prDistParseOut[5]           10 in
+jsPrI[0][5]                  5
+jsAxI[0][5]                  5
+
+########Xb Axis
+
+axLocHome[6]                 0.0in
+axLocAbsMin[6]             -36.3 in
+prLocAbsMin[6]        	   -36.3 in
+axLocAbsMax[6]               0.2 in
+prLocAbsMax[6]               0.2 in
+#axLocAbsMinSlow[6]        -36 in
+#axLocAbsMaxSlow[6]          0 in
+axBackLash[6]		     0.0in
+axRefAtNegEnd[6]	     0
+axConvertDist[6]             1.321in  # 15:1 Ratio Gearbox #0.9897in 20:1 ratio gearbox
+axConvertTicks[6]       262144       
+axVelMax[6]               2000in/min
+prVelMax[6]          	  2000 in/min
+#axVelMaxSlow[6]           100in/min
+jsPrI[0][6]                  6
+jsAxI[0][6]                  6
+
+jsPrI[1][6]                  6			#Define for both job streams
+jsAxI[1][6]                  6
+#jsPrRI[1][0]		     6	
+
+########## Yb Axis
+
+axLocHome[7]                 0mm
+axLocAbsMin[7]           -1000mm
+prLocAbsMin[7]        	 -1000mm
+axLocAbsMax[7]               0.2 in
+prLocAbsMax[7]               0.2 in
+#axLocAbsMinSlow[7]        -32.1 in
+#axLocAbsMaxSlow[7]          0.1 in
+axBackLash[7]		     0.0 in
+axRefAtNegEnd[7]	     0
+axConvertDist[7]             1.2410in
+axConvertTicks[7]       262144
+axVelMax[7]               2500in/min
+prVelMax[7]          	  2500in/min
+#axVelMaxSlow[7]           100in/min
+jsPrI[0][7]                  7
+jsAxI[0][7]                  7
+jsPrI[1][7]                  7			#Define for both job streams
+jsAxI[1][7]                  7
+
+######### Ab Axis
+
+axLocHome[8]                 0.0 deg
+axLocAbsMin[8]              -0.4 deg
+prLocAbsMin[8]        	    -0.4 deg
+axLocAbsMax[8]              35.0 deg
+prLocAbsMax[8]              35.0 deg
+#axLocAbsMinSlow[8]         -0.3 deg
+#axLocAbsMaxSlow[8]         34.8 deg
+axBackLash[8]		     0.0 deg
+axRefAtNegEnd[8]	     1
+axRotaryWrap[8]              0
+axConvertDist[8]         90000
+axConvertTicks[8]       262144
+axVelMax[8]               2500
+prVelMax[8]          	  2500
+axDistParseIn[8]           360 deg		# For 360 degrees max speed of
+prDistParseIn[8]           360 deg		# For 360 degrees max speed of
+axDistParseOut[8]     25400000
+prDistParseOut[8]     25400000
+#axVelMaxSlow[8]           500
+jsPrI[0][8]                  8
+jsAxI[0][8]                  8
+jsPrI[2][8]                  8			#Define for both job streams
+jsAxI[2][8]                  8
+
+
+######### SawBlade Axis
+
+
+axLocHome[9]                 0.0 deg
+axLocAbsMin[9]               0.0 deg
+prLocAbsMin[9]        	     0.0 deg
+axLocAbsMax[9]             360.0 deg
+prLocAbsMax[9]             360.0 deg
+axBackLash[9]		     0.0 deg
+axRefAtNegEnd[9]	     0
+axRotaryWrap[9]              1
+prRotaryWrap[9]              1
+axConvertDist[9]       1800000
+axConvertTicks[9]       262144
+axVelMax[9]             120000
+prVelMax[9]          	120000
+axDistParseIn[9]           360 deg		# For 360 degrees max speed of
+prDistParseIn[9]           360 deg		# For 360 degrees max speed of
+axDistParseOut[9]         1460 mm  		# Circum. of 464mm blade
+prDistParseOut[9]         1460 mm  		# Circum. of 464mm blade
+#axVelMaxSlow[9]             0
+jsPrI[0][9]                  9
+jsAxI[0][9]                  9			#Define for both job streams
+jsPrI[1][9]                  9			#probably dont need to but shouldnt hurt
+jsAxI[1][9]                  9
+
+
+####################### Programming Setup
+
+defLocOptionsOff             1         		# turn off operator options in winPos
+defParseComments             1        		# parse comments ('ls', 'lf') in program
+defGMap[0]                 100
+defGMap[1]                 101
+
+
+######### Probe setup
+
+prbType[0]          1                              #interrupt probe
+prbChannel[0]       5                             #The probe wire to 9 channel
+prbActiveChkOff[0]  1                             # don't generate error if the probe is active when armed
+ 
+
+####################### Display Setup
+
+prFixtureDisplay[0]          1
+prFixtureDisplay[1]          1
+prFixtureDisplay[2]          1
+prFixtureDisplay[3]          1
+prFixtureDisplay[4]          1
+prFixtureDisplay[5]          1
+prFixtureDisplay[6]          1
+prFixtureDisplay[7]          1
+prFixtureDisplay[8]          1
+
+
+
+prFixtureDisplay[10]         1
+prFixtureDisplay[11]         1
+prFixtureDisplay[12]         1
+prFixtureDisplay[13]         1
+prFixtureDisplay[14]         1
+prFixtureDisplay[15]         1
+
+
+#dacRemap[0] 		     0
+#dacRemap[1] 		     1
+#dacRemap[2] 		     2
+#dacRemap[3] 		     3
+#dacRemap[4] 		     4
+#dacRemap[5] 		     6
+#dacRemap[6] 		     5
+#dacRemap[7] 		     7
+#dacRemap[8] 		     8
+#dacRemap[9] 		     9
+#dacRemap[10] 		    10
+#dacRemap[11] 		    11
+#dacRemap[12] 		    12
+
+	
+#encRemap[0]		     0
+#encRemap[1]		     1
+#encRemap[2]		     2
+#encRemap[3]		     3
+#encRemap[4]		     4
+#encRemap[5]		     5
+#encRemap[6]		     6
+#encRemap[7]		     7
+#encRemap[8]		     8
+#encRemap[9]		     9
+#encRemap[10]		    11
+#encRemap[11]		    10
+#encRemap[12]		    12
+
+
+######PLC Variables###################
+
+dioXMoveDist		     4.0in
+
+dioBlinkTime 		   500				# Blink interval
+dioBlinkTime1 		  1000				# Blink interval
+dioUseOpComp		     1				# Enable opComp
+dioTrolleyOffset 	    -5.8in			# Trolley offset
+dioCamPointCnt		    11				# Amount of data points along carcass
+#dioPosReachable	  -200.mm			# Initial opcomp
+dioUseCamera 		     0				# Enable vision system
+dioUseCamXComp               0				# Enable X compensation from camera to be applied
+dioCamXMaxShft               1.0in			# Max camera comp allowed in X
+dioCamZMaxShft               6.0in			# Max camera comp allowed in Z
+#dioScaleAmount		    45
+#dioMaxNoCamDist	   100mm
+#dioMaxTrackDist	   100mm
+#dioCycDlyTime		     0
+dioUseXComp		     1
+#dioUseAllComps		     1
+dioSawRunSpeed		12740000			# Saw Speed on DAC command
+dioRunCont		     0
+dioUseMachBrake		     0		
+dioCarcssSpacng		   609				# Distance between Carcasses
+dioSampleTime		    20
+dioSawRampTmeTtl           400				# 20ms ramp up and down
+dioDebounceDist		   -10.0in			# Distance required to debounce cycle start switch
+dioUseEarlyStrt		     1				# Option to start cycle from saved trolley position
+
+dioYMoveDist		  -800.0mm			# Programmed location for Yb 
+dioYMoveFdRate		  1800.0 in/min			# Feed rate for Yb Moves
+dioYbReturnPos            -100mm				# Distance from zero that Yb returns to
+dioXbReturnPos             0.0mm			# Distance from zero that Xb returns to
+dioSantizeOffPos	  -450mm			# Pos to turn off sanitize. Must be more negative than dioYbReturnPos
+dioUseSanitzeDrs	     1				# Use optional sanitize doors
+
+dioBladeDiaMin		393.7mm				#minium diameter of the blade
+dioBladeDiaMax		470mm				#maxium diameter of the balde
+dioBldRotaMax	       4.0deg				#maxium blade rotate angle
+dioBldRotaMin	      -4.0deg				#minium blade rotate angle
+dioMaxRlseBrkTmr       60                               # maxium brake release time 60 sec
+dioShiftTime		 500				# Amount of time (ms) Machine cutting output is on
+
+
+
+
+####### C Axis variables
+
+dioRolFullExtPos            26.5deg			# Full Extend position of Backup rollers
+#dioRamExtendTm		   900				# Time before retacting rollers to cut position
+#dioRollCutPos	            20.5deg			# Backup rollers final position for cutting
+#dioUseSoftServo             0    			# Enable soft servo for C drive
+dioRollDrwBkAmt		     4.0deg			# Amount to pull the rollers back during long cut
+dioRollDrwBkPt		  -127mm			# Point in Yb travel that the rollers pull back
+
+
+### Carc Stabilizer
+dioUseStabArms		     1				# Use carc Stabilizer arms
+dioArmsUpTm	          1500				# Time(ms) required to swing arms up  
+dioArmsDwnTm		   200				# Time(ms) for arms to swing down
+dioArmsOpnTm		   375				# Time(ms) required to open arms
+dioArmsCloseTm		   250				# Time(ms) required to close arms
+dioFullOpenTm	           300				# From Nuetral to full open time delay
+#dioCarcTooClose	    23in			# If chain stops prior,this dist,deploy arms next cycle
+dioArmRetrctPt	            -6.0in			# point after which the arms retract
+dioArmDeployPt	            -2.0in			# Point after cycle start switch where arms deploy
+
+####Carcass Tracking variables
+
+dioAllowTracking             0				# Use carcass tracking option
+dioShiftTime		  1000				# Amout of time DO_MachCutting stays high
+dioRegstrLngth		    10				# Length of stack register
+dioTrllyMinSpcng	  -450mm			# Tracking window minimum
+dioTrllyMaxSpcng	  -730mm			# Tracking window maximum
+dioStartIndex		     8				# Array index for detecting carcass. This machine.
+dioMach1CutIndx		     0				# dioHogPresent index machine one cuts
+dioMach2CutIndx		     8				# dioHogPresent index machine two cuts
+dioDebnceMinDist	   -2.5in				# Min travel distance after cycle start switch releases before looking for next occurence.
+dioTrackWaitDist	   -0in				# wait dist before shifting register
+dioMaxHoleB4Rst             10				# Maximum number of holes before require reset
+dioRegShft2Soon             0mm			# Minimum distant betweeen pushers. Guard against doubles
+
+#### Chain abort Variables
+
+dioUseChainAbort	     0 				# Use chain stop abort option
+dioTrolleySpacng	   610mm			# Spacing between trolley pushers
+dioMinHdPerHr		    200				# Min chain speed (hd/hr) before cycle will abort
+dioTestChainSkip	     0				# Test bit for function. Lights manual light instead of skipping carcass.
+dioCarcTooClose		    4.0in			# Distance from start switch that will trigger skip when chain stops.
+
+
+### Retract Function
+
+#  Retract Feed Rate
+dioRetFeedRate		  1000
+
+#  Retract Positions
+dioRetPos[0]                 0   			# S axis retract position (Home Position)
+dioRetPos[1]                 0   			# L axis retract position (Home Position)
+dioRetPos[2]                 0   			# U axis retract position (Home Position)
+dioRetPos[3]                 0  			# R axis retract position (Home Position)
+dioRetPos[4]                 0   			# B axis retract position (Home Position)
+dioRetPos[5]                 0  			# T axis retract position (Home Position)
+
+dioRetPos[10]             1990.00mm  			# Xp axis retract position (Home Position)
+dioRetPos[11]             1650.00mm  			# Yp axis retract position (Home Position)
+dioRetPos[12]             -850.00mm  			# Zp axis retract position (Home Position)
+dioRetPos[13]              90.0000deg 			# Ap axis retract position (Home Position)
+dioRetPos[14]              0.0007deg 			# Bp axis retract position (Home Position)
+dioRetPos[15]              0.4498deg 			# Cp axis retract position (Home Position)
+
+
+dioZRetractAmt		  -450.00mm			# Retract amount for saw blade clearanc
+dioXRetractPos		  1400.00mm			# Xp position for retract
+dioPrgrmPointCnt	    11          		# Total number of program points
+dioDebugComp                 1          		# Turn on to display opComp debug variables
+dioDebug		     1				# Turn on debug on startup
+
+
+
+### Cleaning positions					# Stored cleaning positions for the robot
+
+dioCleaningPos[10]	   2000 mm			# Xp
+dioCleaningPos[11]	    500 mm			# Yp
+dioCleaningPos[12]	   -820 mm			# Zp
+dioCleaningPos[13]	     90 deg			# Ap
+dioCleaningPos[14]	   36.3 deg			# Bp
+dioCleaningPos[15]	  0.4498 deg			# Cp
+
+dioXbCleaningPos	  -340 mm			# Stored  cleaning position for backup X axis
+dioYbCleaningPos	  -870 mm			# Stored  cleaning position for Backup Y axis
+dioAbCleaningPos	    10 deg			# Stored  cleaning position for rollers
+
+dioCleanPosMvSpd[0]	   .3				# rapid override speed for js 0 clean position
+dioCleanPosMvSpd[1]	   .5				# rapid override speed for js 1 clean position
+dioCleanPosMvSpd[2]	   .5				# rapid override speed for js 2 clean position
+
+
+
+
+####################### Default Files and Folders
+
+
+# Job file determines program & offset file names
+defProgFilePath  "C:\OpenCNC\Part Programs\"
+defProgFileName  "C:\OpenCNC\Part Programs\SplitRobot"
+defFixFileName   "C:\OpenCNC\Fixture Offsets\SplitRobot"
+

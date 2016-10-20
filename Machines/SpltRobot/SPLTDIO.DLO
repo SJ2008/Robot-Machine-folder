@@ -1,0 +1,207 @@
+#B[1]%+X0000%defFakeMachine%%%CNC: F=real machine, T=fake machine
+#B[1]%+X0000%DI_1ESrOk%%%Safety E-Stop Relay okay
+#B[1]%+X0000%DI_1SrOk%%%1 Safety relay okay
+#B[1]%+X0000%DI_2SrOk%%%2 Safety relay okay
+#B[1]%+X0000%DI_ArmsClose%%%flag to indicate the arm is opened
+#B[1]%+X0000%DI_ArmsParked%%%Stabilizer arms parked
+#B[1]%+X0000%DI_AutoModePB%%%Auto mode/ Cycle start push button
+#B[1]%+X0000%DI_BkupBrkPresOK%%%Backup brake press okay
+#B[1]%+X0000%DI_BrakOvrRideON%%%Override Sa and Ab brakes.
+#B[1]%+X0000%DI_KetopEnable%%%Deadman enable button on Teach pendant
+#B[1]%+X0000%DI_LghtCurtnAlrm%%%Measuring Light Curtain Fault
+#B[1]%+X0000%DI_MachOneCut%%%Machine one has cut input
+#B[1]%+X0000%DI_MasterCRisON%%%MCR relay is on
+#B[1]%+X0000%DI_OperatorEstop%%%Op panel e-stop
+#B[1]%+X0000%DI_PendantEstop%%%E-stop push button on Teach Pendant
+#B[1]%+X0000%DI_RegisterShift%%%register shift input
+#B[1]%+X0000%DI_RetractPB%%%Retract Push Button
+#B[1]%+X0000%DI_SafeContrsOk%%%Safety Contactors okay
+#B[1]%+X0000%DI_SanitizePB%%%Sanitize push button
+#B[1]%+X0000%DI_SawMotorFault%%%Saw Motor Fault
+#B[1]%+X0000%DI_SkipCarcPB%%%Skip carcass Push Button
+#B[1]%+X0000%DI_SkipHogAll%%%Skip hog for all machines.
+#B[1]%+X0000%DI_TrllyCylStart%%%Trolley cycle start switch
+#B[1]%+X0000%DI_WatchDogFail%%%Watch Dog Timer Failed
+#B[1]%+X0000%dioAllowTracking%%%Flag to allow tracking sfc to run
+#B[1]%+X0000%dioAtCleanPos%%%Robot is at clean position
+#B[1]%+X0000%dioAtFullExtPos%%%flag indicate the Z of robot fully extended
+#B[1]%+X0000%dioAtHomePos%%%
+#B[1]%+X0000%dioAtRetractPt%%%At retract point in program
+#B[1]%+X0000%dioBailOutCmplt%%%Bail out of tracking sfc complete
+#B[1]%+X0000%dioCameraSkip%%%Flag to skip carcass if no valid camera data
+#B[1]%+X0000%dioChainDsplyIPM%%%display chain speed inch per min
+#B[1]%+X0000%dioChainStopSkip%%%Chain stopped too close to launch pos flag
+#B[1]%+X0000%dioChangeReq%%%parameter updated and change request from HMI for setting
+#B[1]%+X0000%dioCheckTrllyPos%%%Chain abort flag
+#B[1]%+X0000%dioControlOn%%%Robot control is on
+#B[1]%+X0000%dioCycleStartReq%%%T=want cycle start after reset
+#B[1]%+X0000%dioDataIsZero%%%Flag informs camera data is nul
+#B[1]%+X0000%dioDebnceRegShft%%%Debance the shift button
+#B[1]%+X0000%dioDebounceSW%%%Flag to block contact bounce
+#B[1]%+X0000%dioDebug%%%T=enable debug messages
+#B[1]%+X0000%dioDebugArms%%%Flag to turn on arm debug
+#B[1]%+X0000%dioDebugAuto%%%Debug flag for auto cycle
+#B[1]%+X0000%dioDebugComp%%%See PRGCOMP
+#B[1]%+X0000%dioDebugMap%%%Debug map change
+#B[1]%+X0000%dioDebugSawHd%%%Flag to turn on message to debug saw head
+#B[1]%+X0000%dioDebugTrack%%%Debug tracking enable bit
+#B[1]%+X0000%dioDisableY%%%used to disable Y backup Axis for desired situations
+#B[1]%+X0000%dioDoubleFound%%%Double carcass detected flag
+#B[10]%+X0000%dioDriveFaulted%%%Flag indicates if drive faulted
+#B[1]%+X0000%dioDriveFaultReq%%%Flag sent from SFC runs fault determine loop
+#B[1]%+X0000%dioDrvFaultFound%%%Flag informs SFC that faulted drive(s) have been determined
+#B[1]%+X0000%dioEmuEncoder%%%emulate the encoder signal
+#B[1]%+X0000%dioEncAtLauchPos%%%encoder position at lauch position
+#B[1]%+X0000%dioEnergizeReq%%%F=off, T=on
+#B[1]%+X0000%dioEnergizeState%%%F=off, T=on
+#B[1]%+X0000%dioFailholdFault%%%Set True when a Failhold Occurs on the machine
+#B[1]%+X0000%dioFileRWFlt%%%Set true if a call to read/write a Variable Group fails
+#B[1]%+X0000%dioGerman%%%German Language requested
+#B[1]%+X0000%dioGoing2Auto%%%Flag for msg app to select correct axes config.
+#B[1]%+X0000%dioHandWheelOK%%%
+#B[1]%+X0000%dioHndWhlX1%%%
+#B[1]%+X0000%dioHndWhlX10%%%
+#B[1]%+X0000%dioHndWhlX100%%%
+#B[1]%+X0000%dioHogCounted%%%First hog counted by activating skip hog button
+#B[1]%+X0000%dioHogSkipped%%%Zero put into stack register. (for debugging)
+#B[1]%+X0000%dioIgnMechWarnin%%%Bit to ignore mech2 warn 91
+#B[1]%+X0000%dioIncSeg%%%Flag from part program to increment segment
+#B[1]%+X0000%dioInCycle%%%Flag for in cycle
+#B[1]%+X0000%dioIndvDrvEnReq%%%
+#B[10]%+X0000%dioLagTmrStrtd%%%
+#B[1]%+X0000%dioLatchEdge%%%Latch rising edge of cycle start switch
+#B[1]%+X0000%dioMach1Saved%%%Saved  status of machine cutting
+#B[1]%+X0000%dioMach2Saved%%%Saved  status of machine cutting
+#B[1]%+X0000%dioMach3Saved%%%Saved  status of machine cutting
+#B[1]%+X0000%dioMachineError%%%Robot in error mode
+#B[1]%+X0000%dioMachineFault%%%True if a Machine Fault Condition is Present
+#B[1]%+X0000%dioManModeReq%%%Latches the manual mode req while in cycle
+#B[1]%+X0000%dioModeChgWait%%%Flag to wait on mode change.
+#B[16]%+X0000%dioPRLagTmrSt%%%
+#B[1]%+X0000%dioPrtPrgComplt%%%Part Program complete.
+#B[1]%+X0000%DIOR_BKUPROLL%%%Start Flag for backup roller SFC
+#B[1]%+X0000%DIOR_BLADECHG%%%Start Flag for blade change sfc
+#B[1]%+X0000%DIOR_CARCSTAB%%%Flag to deploy the Stablizer Arm
+#B[1]%+X0000%DIOR_CNTRLSTOP%%%Start flag for controlled stop sfc
+#B[1]%+X0000%DIOR_ENERGIZE%%%Flag to enable runEnerg SFC
+#B[1]%+X0000%DIOR_INDVENBL%%%Start flag for individual axis enable
+#B[1]%+X0000%DIOR_MAP4AUTO%%%Start flag for auto mode map configuration
+#B[1]%+X0000%DIOR_RAUTO%%%Start flag for auto sfc
+#B[1]%+X0000%DIOR_RESET%%%Flag to enable SFC program
+#B[1]%+X0000%DIOR_RETRACT%%%Start retract flag
+#B[1]%+X0000%DIOR_RUNTEST%%%start flag 
+#B[1]%+X0000%DIOR_SANITIZE%%%Start Sanitize sfc flag
+#B[1]%+X0000%DIOR_SETMAP%%%Start flag for map setting sfc
+#B[1]%+X0000%DIOR_SYNC%%%Flag to enable SFC program
+#B[1]%+X0000%DIOR_TRACK%%%Start flag for conveyor tracking SFC
+#B[1]%+X0000%dioRailLargeHog%%%Rail detected large hog
+#B[1]%+X0000%dioRailMedHog%%%Rail detected medium hog
+#B[1]%+X0000%dioRailSmallHog%%%Rail detected small hog
+#B[1]%+X0000%dioRegisterShift%%%Soft register shift input
+#B[1]%+X0000%dioRegShftWait%%%Wait to shift register
+#B[1]%+X0000%dioRegShift%%%Mirror of Reg shift switch for winDatatool
+#B[1]%+X0000%dioRelseBrkReq%%%release the brake for Roller and Sa request from HMI
+#B[1]%+X0000%dioResetSeq%%%T=reset sequencers in Reset
+#B[1]%+X0000%dioRetractDone%%%indicate the system retract done and ready for switch 101
+#B[1]%+X0000%dioRlseBrkState%%%BRAKE release state
+#B[1]%+X0000%dioRunCont%%%Run test cycle continously
+#B[1]%+X0000%dioSawHeadState%%%Saw head Status Run/ Stop
+#B[1]%+X0000%dioSawRunReq%%%Saw head Status Change request
+#B[1]%+X0000%dioSawStartup%%%Saw head Start up ramp request
+#B[1]%+X0000%dioSawStop%%%Flag For Ramp stop the Saw
+#B[1]%+X0000%dioSawStopReq%%%Request to stop saw
+#B[1]%+X0000%dioSerResetReq%%%Flag from SFC to reset serEnableDrives[]
+#B[1]%+X0000%dioSetMapComp%%%Flag to indicate all axes mapped correctly
+#B[1]%+X0000%dioSkipAnimal%%%Skip next animal flag
+#B[1]%+X0000%dioSkipCarcass%%%Carcass not to be processed
+#B[1]%+X0000%dioSkipCarcWait%%%Wait to reset skip hog flag. Debouncing previous carc
+#B[1]%+X0000%dioSkipHogAll%%%Latched state of the  skip all option
+#B[1]%+X0000%dioTestAutoCycle%%%Test auto cycle 
+#B[1]%+X0000%dioTestBkUp%%%
+#B[1]%+X0000%dioTestChainSkip%%%Bit used for testing the chain stop skip abort
+#B[1]%+X0000%dioTestDblLogic%%%Test flag for skip doubles logic
+#B[1]%+X0000%dioTestSkipAll%%%Vartiable to test the skip all request
+#B[1]%+X0000%dioTestTrackng%%%Test tracking enable
+#B[1]%+X0000%dioTrackingEnbld%%%Tracking enabled
+#B[1]%+X0000%dioTrackWaiting%%%Waiting for track distance to wind down
+#B[1]%+X0000%dioTrckngStarted%%%Carcass tracking has started flag
+#B[1]%+X0000%dioTrkWasRunning%%%Tracking sfc already running
+#B[1]%+X0000%dioTrllyCylStart%%%
+#B[1]%+X0000%dioTrllyPosSaved%%%Trolley position at switch saved by previous cycle
+#B[1]%+X0000%dioTrllySwitch2%%%
+#B[1]%+X0000%dioUseAbsPosFdbk%%%Set true if Drives have Absolute Position Feedback
+#B[1]%+X0000%dioUseCamera%%%Use vision system
+#B[1]%+X0000%dioUseCamXComp%%%Enable X comp from camera
+#B[1]%+X0000%dioUseChainAbort%%%Use abort if chain stops too close to strt pos option
+#B[1]%+X0000%dioUseEarlyStrt%%%Use early start option
+#B[1]%+X0000%dioUseHSStartSW%%%Use high speed start option
+#B[1]%+X0000%dioUseMachBrake%%%For optional using machinic brake
+#B[1]%+X0000%dioUseOpComp%%%Use Op Comp instead of hand wheel feed
+#B[1]%+X0000%dioUseSanitzeDrs%%%Use optional sanitize doors
+#B[1]%+X0000%dioUseStabArms%%%var for using pnuematic carcass stblzng arms on backup sta
+#B[1]%+X0000%dioUseXComp%%%Flag informs to use camera/overhead encoder data
+#B[1]%+X0000%dioUseYComp%%%Flag informs to use camera data for opcomp
+=1
+#B[1]%+X0000%dioUseZComp%%%Flag informs use camera data for opcomp
+=1
+#B[1]%+X0000%dioWaitForDecel%%%Wait for handwheel to decel to a stop
+#B[1]%+X0000%dioWt2SetBailOut%%%Delay setting bail out complete flag
+#B[1]%+X0000%DL_AutoModePB%%%Latched state of auto mode PB
+#B[1]%+X0000%DL_DataIsZero%%%
+#B[1]%+X0000%DL_dioSawRunReq%%%Latch the status for dioSaw head run
+#B[1]%+X0000%DL_dioTest%%%
+#B[1]%+X0000%DL_DriveFaultReq%%%
+#B[1]%+X0000%DL_IndvDrvEnReq%%%
+#B[1]%+X0000%DL_MachCutting%%%Latched state of machine cutting output
+#B[1]%+X0000%DL_MachOneCut%%%Latched state of DI_MachineOneCut
+#B[1]%+X0000%DL_MachThreeCut%%%Latched state of DI_MachineThreeCut
+#B[1]%+X0000%DL_MachTwoCut%%%Latched state of DI_MachineTwoCut
+#B[1]%+X0000%DL_MasterCRisON%%%
+#B[1]%+X0000%DL_RegisterShift%%%Latched state of register shift input
+#B[1]%+X0000%DL_RelseBrkReq%%%Latch for the release brake request
+#B[1]%+X0000%DL_RetractPB%%%Latched state of Retract P.B.
+#B[1]%+X0000%DL_SanitizePB%%%Latched state of sanitize P.B.
+#B[1]%+X0000%DL_SawMotorFault%%%Latched state of saw motor fault
+#B[1]%+X0000%DL_SerResetReq%%%
+#B[1]%+X0000%DL_SkipCarcPB%%%Skip hog button latch
+#B[1]%+X0000%DL_SkipHogAll%%%Latched state of the skip all push button
+#B[1]%+X0000%DL_TestTrackng%%%Latched state of test tracking enable
+#B[1]%+X0000%DL_TrackEnabled%%%Tracking enabled flag
+#B[1]%+X0000%DL_TrllyCylStart%%%
+#B[1]%+X0000%DO_AutoModeLP%%%Auto mode lamp
+#B[1]%+X0000%DO_AutoModePBLP%%%Auto mode push button lamp\
+#B[1]%+X0000%DO_BkupAirPmpSol%%%Backup air pump solonoid
+#B[1]%+X0000%DO_BkupBrakeSol%%%Backup brake solonoid
+#B[1]%+X0000%DO_BkUpSanSol%%%Backup sanitize solonoid
+#B[1]%+X0000%DO_DrvCntrlDsble%%%Control power disable
+#B[1]%+X0000%DO_DrvMainSupply%%%Drive Mains enabled
+#B[1]%+X0000%DO_FaultLP%%%Fault indicator lamp
+#B[1]%+X0000%DO_MachCutting%%%Machine is cutting.
+#B[1]%+X0000%DO_ManualModeLP%%%Manual indicator lamp
+#B[1]%+X0000%DO_RelseAbBrk%%%output release the roller brake
+#B[1]%+X0000%DO_RelseSaBrk%%%output to relase Base brake
+#B[1]%+X0000%DO_SanitizeDrs%%%Sanitize Doors Deploy
+#B[1]%+X0000%DO_SanitizePBLP%%%sanitize push button lamp
+#B[1]%+X0000%DO_SawSanitzeSol%%%Saw side sanitize solonoid
+#B[1]%+X0000%DO_SkpCrcssPBLP%%%Skip carcass push button lamp
+#B[1]%+X0000%DO_SplitAirSol%%%Air solonoid for split ram
+#B[1]%+X0000%DO_StabArmsClSol%%%Arm close solnoid
+#B[1]%+X0000%DO_StabArmsOPSol%%%Arm open solnoid
+#B[1]%+X0000%DO_StbArmsDnSol%%%Arm go down solnoid
+#B[1]%+X0000%DO_StbArmsUpSol%%%Stabilizer up Solonoid
+#B[1]%+X0000%DO_TeachMDBypass%%%Teach mode bypass
+#B[1]%+X0000%Edge_TrllyCylSta%%%Stores the risig edge of trlly switch
+#B[1]%+X0000%ErrSync%%%True if error occurred during Sync
+#B[1]%+X0000%genCycleOn%%%T=in cycle, Run mode and seq not stopped or held
+#B[8]%+X0000%jsBusy%%%CNC: See OpenCNC Variable Dictionary for definition
+#B[1]%+X0000%mDisplayInch%%%CNC:
+#B[10]%+X0000%mech2Alrm9192ign%%%
+#B[1]%+X0000%mFeedHold%%%CNC: See OpenCNC Variable Dictionary for definition
+#B[8]%+X0000%mHandWOn%%%CNC: See variable dictionary 
+#B[8]%+X0000%mHWDistIsZero%%%CNC: See variable dictionary
+#B[1]%+X0000%mSingleBlockOn%%%CNC: See OpenCNC Variable Dictionary for definition
+#B[1]%+X0000%mSyncDone%%%CNC: See OpenCNC Variable Dictionary for definition
+#B[1]%+X0000%mWDTRestart%%%CNC:
+#B[4]%+X0000%SetCut%%%Signal already sent to other machines
+#B[1]%+X0000%z%%%Temporary boolean variable
+

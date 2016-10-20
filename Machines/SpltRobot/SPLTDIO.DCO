@@ -1,0 +1,279 @@
+#A[1]%+X0000%a%%I0%0%Temporary analog variable
+#A[16]%+X0000%axConvertDist%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axConvertTicks%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axFErr%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axFErrMaxAllowed%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axLoc%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axLocHome%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axRefAtNegEnd%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axRefSwitchOn%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axSyncOffset%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axVelMax%%F0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%axVoltEnable%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%b%%I0%0%Temporary analog variable used for function returns
+#A[1]%+X0000%candidateID%%I0%0%See PRGCOMP
+#A[10]%+X0000%dacVoltMax%%I0%0%CNC: Define for the dacVoltMax for Saw Ramp
+#A[10]%+X0000%dacVolts%%I0%0%CNC: DACvolts output for the saw head
+#A[1]%+X0000%defAccelMax%%F0%0%CNC: See Variable dictionary for definition
+#A[1]%+X0000%defAxisCount%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%defHandWDen%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%defHandWIn%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%defHandWNum%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[9]%+X0000%defHandWOut%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%defIntPerSec%%I0%0%CNC:See variable dictionary for definition
+#A[1]%+X0000%defJerkMax%%F0%0%CNC: See Variable dictionary for definition
+#A[1]%+X0000%dioAbCleaningPos%%I0%0%Stored  cleaning position for rollers
+#A[1]%+X0000%dioAccelMax%%F0%0%Acceleration Max while jogging
+#A[1]%+X0000%dioAmalSeletReq%%I0%0%Request change the animal size from HMI
+#A[1]%+X0000%dioAnimalSelect%%I0%0%current animal select
+#A[1]%+X0000%dioArmDeployPt%%I0%0%Position to deploy stab arms if used.
+#A[1]%+X0000%dioArmRetrctPt%%I0%0%position for Arm retract
+#A[1]%+X0000%dioArmsCloseTm%%I0%0%Delay timer value for arm close
+#A[1]%+X0000%dioArmsDwnTm%%I0%0%delay Timer for the ARMS deploy
+#A[1]%+X0000%dioArmsOpnTm%%I0%0%delay timer value for arm open
+#A[1]%+X0000%dioArmsReq%%I0%0%Lacth the Arm req for the arm deploy
+#A[1]%+X0000%dioArmsState%%I0%0%Varible for Arm deploy status
+#A[1]%+X0000%dioArmsUpTm%%I0%0%Delay timer value for arm goes up
+#A[10]%+X0000%dioAxisRetNum%%I0%0%If axis is not faulted set the axis retract selection
+#A[1]%+X0000%dioBkUpRollReq%%I0%0%Request for roller change
+#A[1]%+X0000%dioBkUpRollState%%I0%0%Current state of rollers
+#A[1]%+X0000%dioBladeDelta%%F0%0%Final Z adjust depth for the robot
+#A[1]%+X0000%dioBladeDiaMax%%I0%0%maximum blade diameter in mm
+#A[1]%+X0000%dioBladeDiameter%%I0%0%Current blade diameter
+#A[1]%+X0000%dioBladeDiaMin%%I0%0%minium blade diameter in mm
+#A[1]%+X0000%dioBladeDiaReq%%I0%0%save the new blade diameter pass from HMI
+#A[1]%+X0000%dioBldRotaAngle%%I0%0%Blade rotation left and right angle
+#A[1]%+X0000%dioBldRotaAngReq%%I0%0%Blade Rotation Left or right change Req value
+#A[1]%+X0000%dioBldRotaMax%%I0%0%blade rotate left or right max angle
+#A[1]%+X0000%dioBldRotaMin%%I0%0%blade rotate left or right min angle
+#A[1]%+X0000%dioBlinkTime%%I0%0%Blink interval for lights
+#A[1]%+X0000%dioBlinkTime1%%I0%0%
+#A[1]%+X0000%dioBrisktFractn%%I0%0%percent of move from start to brisket
+#A[1]%+X0000%dioBumpSolTm%%I0%0%delay timer value for arm to go to park position
+#A[33]%+X0000%dioCamDataStrd%%I0%0%Saved camera data locations.
+#A[1]%+X0000%dioCamOpComp%%I0%0%Amount to be add to chain following by camera
+#A[1]%+X0000%dioCamPointCnt%%I0%0%Total number of data points from Camera
+=11
+#A[1]%+X0000%dioCamXMaxShft%%I0%0%Maxium shift allowed by Camera X
+#A[1]%+X0000%dioCamZMaxShft%%I0%0%Max camera op comp for Z axis
+#A[1]%+X0000%dioCandidateID%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioCarcssSpacng%%I0%0%Spacing of carcasses on chain
+#A[1]%+X0000%dioCarcTooClose%%I0%0%Abort cycle if within this dist of start switch
+#A[1]%+X0000%dioChainDUPM%%I0%0%Chain speed in distance units per min Convert to IPM in HMI
+#A[1]%+X0000%dioChainRaw%%F0%0%Raw Chain speed from the encoder
+#A[1]%+X0000%dioChgMapCheck%%I0%0%monitor the change map routine
+#A[16]%+X0000%dioCleaningPos%%I0%0%Stored cleaning positions for the robot
+#A[3]%+X0000%dioCleanPosMvSpd%%F0%0%Rapid overrides for clean positon move
+#A[1]%+X0000%dioConvertedMM%%I0%0%Conversion variable
+#A[1]%+X0000%dioCurrChainRate%%I0%0%current chain rate
+#A[1]%+X0000%dioCurrentHoleCt%%I0%0%Current number of empty pushers gone by.
+#A[1]%+X0000%dioCurrentMap%%I0%0%Stored current map state (0=100, 1=101)
+#A[1]%+X0000%dioCurrentMM%%I0%0%Current position in mm
+#A[1]%+X0000%dioCycleCount%%I0%0%Store how many head processed
+#A[1]%+X0000%dioDACcntsTem%%I0%0%Saw head Tempery Save DAC counts
+#A[1]%+X0000%dioDACPerTtlCnts%%I0%0%How many DAC output per Count
+#A[1]%+X0000%dioDebnceMinDist%%I0%0%Minimum travel distance after falling edge.
+#A[1]%+X0000%dioDebnceStrtPos%%I0%0%Debance the shift switch start position 
+#A[1]%+X0000%dioDebounceDist%%I0%0%Distance required to debounce wand switch
+#A[1]%+X0000%dioDeltaSaved%%I0%0%Saved value of enc raw
+#A[1]%+X0000%dioDistToGo%%I0%0%Decending dist to go for tracking. Before shifting
+#A[1]%+X0000%dioDoubleFndPos%%I0%0%Encoder position when doubles detected
+#A[1]%+X0000%dioEmuDnominator%%I0%0%Every time write this amount to enc channel from VB
+#A[1]%+X0000%dioEncCountDelta%%I0%0%Difference in enc raw per scan
+#A[1]%+X0000%dioEncCountDiff%%I0%0%Encoder count difference from last plc scan
+#A[1]%+X0000%dioEncoderLimit%%I0%0%limit the encoder count for emu trolley switch
+#A[1]%+X0000%dioEncPosChange%%I0%0%Encoder position Change from last plc Scan in D.U.
+#A[1]%+X0000%dioEncPosChanged%%I0%0%total dist injected with opcomp
+#A[1]%+X0000%dioEncPosDiff%%I0%0%Differnce enc distance between preview encoder reading
+#A[1]%+X0000%dioEncPosition%%I0%0%Current trolley position
+#A[1]%+X0000%dioEncPosRegstr%%I0%0%Encoder position register for controling the shifting stack
+#A[1]%+X0000%dioEncPosSaved%%I0%0%Saved encoder Position
+#A[1]%+X0000%dioEncTrackDist%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioEncTravelDist%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioEncTravelDst2%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioEncTrolleySw%%I0%0%Emulater the trolley switch
+#A[1]%+X0000%dioEncValChanged%%I0%0%Change in enc counts from last scan
+#A[1]%+X0000%dioEncValSaved%%I0%0%Saved enc value from last scan
+#A[1]%+X0000%dioEncValTotal%%I0%0%Total saved enc counts since last trolley rising edge
+#A[1]%+X0000%dioEncValTtlSvd%%I0%0%Saved enc count total from previous scan
+#A[1]%+X0000%dioEncXref%%I0%0%See PRGCOMP
+#A[1]%+X0000%diofinlRbotXOfse%%F0%0%final robot offset for horizontal
+#A[1]%+X0000%dioFrac%%I0%0%current fractional part of entire progmmd move
+#A[1]%+X0000%dioFracX%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioFullOpenTm%%I0%0%Delay from Nuetral pos to full open pos
+#A[1]%+X0000%dioHandWAxis%%I0%0%
+#A[1]%+X0000%dioHandWDelta%%I0%0%
+#A[1]%+X0000%dioHandWheelRaw%%I0%0%
+#A[1]%+X0000%dioHandWSaved%%I0%0%
+#A[1]%+X0000%dioHandWTemp%%I0%0%
+#A[1]%+X0000%dioHeadPerHr%%I0%0%Chain speed in Animals per hour
+#A[24]%+X0000%dioHogPresent%%I0%0%Shift register for carcass tracking  (0-23)
+#A[24]%+X0000%dioHogSize%%I0%0%Register of hog size
+#A[1]%+X0000%dioHydLoTime%%I0%0%timeout for hydraulic fault when pressurizing brakes 
+#A[1]%+X0000%dioInterSaved%%I0%0%Saved Interval count
+#A[1]%+X0000%dioJerkMax%%F0%0%Jerk max while jogging
+#A[1]%+X0000%dioLagErrMaxTime%%I0%0%Amount of time in ms for Excess Following error
+#A[1]%+X0000%dioLargeZCutPos%%I0%0%Z depth for large animal
+#A[1]%+X0000%dioLargeZCutReq%%I0%0%Request change for large animal Z cut from HMI
+#A[1]%+X0000%dioLoopCount%%I0%0%
+#A[1]%+X0000%dioMach1CutIndx%%I0%0%Cutting index positon for machine one
+#A[1]%+X0000%dioMach2CutIndx%%I0%0%Cutting index positon for machine two
+#A[1]%+X0000%dioMach3CutIndx%%I0%0%Cutting index positon for machine three
+#A[1]%+X0000%dioMapReq%%I0%0%Map change requested
+#A[1]%+X0000%dioMaxHoleB4Rst%%I0%0%Maximum number of holes before require reset
+#A[1]%+X0000%dioMaxNoCamDist%%I0%0%Max dist allowed with no cam data
+#A[1]%+X0000%dioMaxRlseBrkTmr%%I0%0%maximum allowed brake release on time
+#A[1]%+X0000%dioMechAlarmOK%%I0%0%Value expected from mechAlarm[] when no drive fault
+#A[1]%+X0000%dioMediumZCutPos%%I0%0%Z depth for Medium animal
+#A[1]%+X0000%dioMediumZCutReq%%I0%0%request change medium  animal Z from HMI
+#A[1]%+X0000%dioMinHdPerHr%%I0%0%Minimum head per hr speed to attempt cutting
+#A[1]%+X0000%diomIntervalDif%%I0%0%Difference of the Old mInterval and the current interval
+#A[1]%+X0000%diomIntervalOld%%I0%0%Saw ramp Old mInterval use for generate the ramp
+#A[1]%+X0000%dioMMperSec%%I0%0%Chain speed in mm/sec
+#A[1]%+X0000%dioModeReq%%I0%0%Mode Change request
+#A[1]%+X0000%dioMotionSeg%%I0%0%See PRGCOMP
+=-1
+#A[1]%+X0000%dioMotionSegStrd%%I0%0%See PRGCOMP
+=-1
+#A[1]%+X0000%dioMotionSegSvd%%I0%0%Saved value of motion segment
+#A[33]%+X0000%dioNextCamData%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioNextID%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioNumNetwrkDrvs%%I0%0%Specifies the number of Drives in the Mechatrolink Network
+#A[1]%+X0000%dioOpCmpXDsply%%I0%0%Display in winvar in inches
+#A[1]%+X0000%dioOpCmpYDsply%%I0%0%Display in winVar in inches
+#A[1]%+X0000%dioOpCmpZDsply%%I0%0%Display in winVar in inches
+#A[1]%+X0000%dioOpCompX%%I0%0%Calculated op comp for X axis
+#A[1]%+X0000%dioOpCompY%%I0%0%Calcutated op comp for Y axis
+#A[1]%+X0000%dioOpCompZ%%I0%0%Calculated op comp for Z axis
+#A[100]%+X0000%dioPoundRead%%F0%0%tempdata for read out pound variable
+#A[33]%+X0000%dioPrgrmPoint%%I0%0%saved program taught point locations.
+#A[1]%+X0000%dioPrgrmPointCnt%%I0%0%count of saved program taught point locations.
+=11
+#A[1]%+X0000%dioPRLagErrMaxT%%I0%0%Amount of time in ms for Excess Following error
+#A[1]%+X0000%dioRawSaved%%I0%0%Saved encoder count raw from last scan
+#A[1]%+X0000%dioRegShft2Soon%%I0%0%Minimum distant betweeen pushers. Guard against doubles
+#A[1]%+X0000%dioRegstrLngth%%I0%0%Defined length of tracking register.
+#A[1]%+X0000%dioRetAxisSelect%%I0%0%sets the number of axis to retract
+#A[1]%+X0000%dioRetFeedRate%%I0%0%Retract Feed Rate
+#A[16]%+X0000%dioRetPos%%I0%0%Retract position for individual axis
+#A[1]%+X0000%dioRetractMitor%%I0%0%Monitor the retract routine
+#A[1]%+X0000%dioRobotXOffReq%%I0%0%save the Robot X offset pass from HMI
+#A[1]%+X0000%dioRobotXOffset%%I0%0%saved Xp offset for change the robot offset
+#A[1]%+X0000%dioRolFullExtPos%%I0%0%Roll fully extened postion
+#A[1]%+X0000%dioRollDrwBkAmt%%I0%0%Amount to drawbackrollers
+#A[1]%+X0000%dioRollDrwBkPt%%I0%0%Point at which the rollers draw back
+#A[1]%+X0000%dioSampleTime%%I0%0%Time between samples
+#A[1]%+X0000%dioSanitizeReq%%I0%0%Current requestes sanitize state
+#A[1]%+X0000%dioSanitizeState%%I0%0%Current state of sanitize sol
+#A[1]%+X0000%dioSantizeOffPos%%I0%0%Y' position  for sanitize off
+#A[3]%+X0000%dioSaveRapid%%F0%0%Saved js Rapid Override
+#A[1]%+X0000%dioSawNumDACcnts%%I0%0%Saw head Ramp number of Count per mInterval
+#A[1]%+X0000%dioSawRampTmeTtl%%I0%0%Saw head ramps Total Time
+#A[1]%+X0000%dioSawRunSpdReq%%I0%0%Request change the Saw Speed from HMI
+#A[1]%+X0000%dioSawRunSpeed%%I0%0%Command run speed for saw inverter
+#A[1]%+X0000%dioSDRailIndx%%I0%0%Index position of SD rail
+#A[1]%+X0000%dioShiftDelay%%I0%0%Amount of time, in ms, to delay the shifting of the register
+#A[1]%+X0000%dioShiftTime%%I0%0%Amount of time in ms that the machine cutting output is on
+#A[1]%+X0000%dioSkipHogIndx%%I0%0%Index saved skip hog from skip all pb
+#A[1]%+X0000%dioSmallZCutPos%%I0%0%Z detph for small animal
+#A[1]%+X0000%dioSmallZCutReq%%I0%0%Request small pos change from HMI
+#A[1]%+X0000%dioSpnDrEnblTime%%I0%0%Sping drive enable time
+#A[1]%+X0000%dioStartIndex%%I0%0%Start position index for this machine in the stack
+#A[1]%+X0000%dioSwitchSavdPos%%I0%0%Saved pos of cycle start switch release
+#A[1]%+X0000%dioTargEndLoc%%I0%0%Calculated position to wait for tracking
+#A[1]%+X0000%dioTempTotal%%I0%0%
+#A[1]%+X0000%dioTestIndx%%I0%0%
+#A[1]%+X0000%dioThirdID%%I0%0%See PRGCOMP
+#A[1]%+X0000%dioTimeX1000%%I0%0%Time multiplied by 1000 for integer
+#A[1]%+X0000%dioTotalinterv%%I0%0%Total elapsed intervals
+#A[1]%+X0000%dioTrackPosSaved%%I0%0%Saved pos when track started
+#A[1]%+X0000%dioTrackWaitDist%%I0%0%Wait dist after rising edge of Reg shift switch
+#A[1]%+X0000%dioTrllyLeadEdge%%I0%0%Current distance from rising edge of trolley switch
+#A[1]%+X0000%dioTrllyMaxSpcng%%I0%0%Track window maximum spacing
+#A[1]%+X0000%dioTrllyMinSpcng%%I0%0%Tracking window minium spacing
+#A[1]%+X0000%dioTrllyPosDisp%%I0%0%Saved trolley position converted to mm
+#A[1]%+X0000%dioTrolleyOffset%%I0%0%Dist from trolley switch to IS REACHABLE
+#A[1]%+X0000%dioTrolleySpacng%%I0%0%Trolley Spacing
+#A[1]%+X0000%dioXbCleaningPos%%I0%0%Stored  cleaning position for backup X axis
+#A[1]%+X0000%dioXbReturnPos%%I0%0%Position for Yb to return to during auto
+#A[1]%+X0000%dioXInterpol%%I0%0%Interpolated X location in camera world
+#A[1]%+X0000%dioXMoveDist%%I0%0%
+#A[1]%+X0000%dioXRetractPos%%I0%0%Xp Robot Retract Position
+#A[1]%+X0000%dioYbCleaningPos%%I0%0%Stored  cleaning position for Backup Y axis
+#A[1]%+X0000%dioYbReturnPos%%I0%0%Position for Yb to return to during auto
+#A[1]%+X0000%dioYEndOfCutPos%%I0%0%Y end of cut position 
+#A[1]%+X0000%dioYfinalEndCut%%F0%0%final Y end of cut 
+#A[1]%+X0000%dioYInterpol%%I0%0%equiv Y location based on cam length.
+#A[1]%+X0000%dioYlargePos%%I0%0%Y end of cut for large animal
+#A[1]%+X0000%dioYlargePosReq%%I0%0%Request change large animal Y end of cut from HMI
+#A[1]%+X0000%dioYmediumPos%%I0%0%Y end of cut for medium animal
+#A[1]%+X0000%dioYmediumPosReq%%I0%0%Request change medium animal From HMI
+#A[1]%+X0000%dioYMoveDist%%I0%0%Yb programmed move location
+#A[1]%+X0000%dioYMoveFdRate%%F0%0%Feed rate for Yb moves
+#A[1]%+X0000%dioYsmallPos%%I0%0%Y end of cut for small animal
+#A[1]%+X0000%dioYsmallPosReq%%I0%0%Y end of cut change from HMI
+#A[1]%+X0000%dioZextendedPos%%I0%0%current Z depht apply for the Gcode
+#A[1]%+X0000%dioZfinalpos1%%F0%0%full extended Z position
+#A[1]%+X0000%dioZfinalpos2%%F0%0%save for Z partily pull back location
+#A[1]%+X0000%dioZfinalpos3%%F0%0%Save for z Final lcation for end of the straigt cut
+#A[1]%+X0000%dioZInterpol%%I0%0%Interpolated z location in camera world
+#A[1]%+X0000%dioZRetractAmt%%I0%0%Amount of dist. to retract Z
+#A[1]%+X0000%DL_mFailhold%%I0%0%
+#A[1]%+X0000%ENC_MechCH1%%I0%0%Encoder channel 1
+#A[1]%+X0000%ENC_MechCH2%%I0%0%Encoder channel 2
+#A[11]%+X0000%encCountDelta%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%encCountPerRev%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[11]%+X0000%encCountRaw%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[11]%+X0000%encCountRev%%I0%0%CNC: See Variable dictionary for definition
+#A[16]%+X0000%encCountRevSet%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%genMachState%%I0%0%0=no servo, 1=enabling, 2=no sync, 3=syncing, 4=ready
+#A[1]%+X0000%genTempLong%%I0%0%Temporary variable for use by winGen
+#A[8]%+X0000%jsAccelMax%%F0%0%CNC: See variable dictionary for definition
+#A[8]%+X0000%jsCRCMode%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsFeedHold%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsFeedMode%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsFeedOverride%%F0%0%CNC: See Variable dictionary for definition
+#A[8]%+X0000%jsFixtureNumber%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsInchMode%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsJerkMax%%F0%0%CNC: See Variable dictionary for definition
+#A[8]%+X0000%jsMapIndex%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsMapRIndex%%I0%0%CNC: See Variable dictionary for definition
+#A[8]%+X0000%jsMapSelect%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsNoFroMode%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsOverrideAvoid%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsPlaneSel0%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsPlaneSel1%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsRapidOverride%%F0%0%CNC: See Variable dictionary for definition
+#A[8]%+X0000%jsSeqCalcReset%%I0%0%CNC:
+#A[8]%+X0000%jsSeqWait%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%jsVelocityNow%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mapEnvelope_0%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[9]%+X0000%mechAlarm%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mFailHold%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mFeedHoldAvoid%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mFeedOverride%%F0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[8]%+X0000%mHandWDist%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mIntCountIntervl%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mJogOverride%%F0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%mRapidOverride%%F0%0%CNC: See Variable Dictionary for Definition
+#A[1]%+X0000%mRunMode%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%plcJogType%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[2]%+X0000%prbEnable%%I0%0%CNC: See variable dictionary for description
+#A[2]%+X0000%prbTriggered%%I0%0%CNC: See Variable dictionary for description.
+#A[16]%+X0000%prFErr%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%prFErrMaxAllowed%%I0%0%Max Ferr allowed on PR axis
+#A[16]%+X0000%prFxNow%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%prJogRate%%F0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%prLoc%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%prOpComp%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%prOpCompNow%%I0%0%CNC: Current amount of opComp per axis
+#A[16]%+X0000%prVelMax%%F0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[16]%+X0000%prVelocity%%I0%0%CNC: See variable dictionary for definition
+#A[10]%+X0000%serDriveClrAlarm%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[10]%+X0000%serDriveError%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[10]%+X0000%serDriveTorque%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[10]%+X0000%serDriveZero%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[10]%+X0000%serEnableDrive%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%serEnableDrives%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+#A[1]%+X0000%serEnableStatus%%I0%0%CNC: See OpenCNC Variable Dictionary for definition
+

@@ -1,0 +1,32 @@
+#B[1]%+X0000%defFakeMachine%%%CNC: F=real machine, T=fake machine
+#B[1]%+X0000%dioAtCleanPos%%%DIO: At sanitize position
+#B[1]%+X0000%dioAtFullExtPos%%%DIO: Robot at full extend position
+#B[1]%+X0000%dioAtHomePos%%%DIO: Robot is at home position
+#B[1]%+X0000%dioAtRetractPt%%%DIO: AT retract point
+#B[1]%+X0000%dioCycleStartReq%%%DIO: T=want cycle start after reset
+#B[1]%+X0000%dioDebugAuto%%%DIO: Debug auto mode
+#B[1]%+X0000%dioDebugMap%%%DIO: Debug map select logic
+#B[1]%+X0000%dioEnergizeReq%%%DIO: F=off, T=on
+#B[1]%+X0000%dioEnergizeState%%%DIO: F=off, T=on
+#B[1]%+X0000%dioGoing2Auto%%%DIO: Going into auto mode flag
+#B[1]%+X0000%dioPrtPrgComplt%%%DIO: Part Program complete.
+#B[1]%+X0000%DIOR_BKUPROLL%%%DIO:
+#B[1]%+X0000%DIOR_BLADECHG%%%DIO: Cleaning position sfc running
+#B[1]%+X0000%DIOR_ENERGIZE%%%DIO: Flag to enable SFC program
+#B[1]%+X0000%DIOR_RAUTO%%%DIO:
+#B[1]%+X0000%DIOR_RESET%%%DIO: Flag to enable SFC program
+#B[1]%+X0000%DIOR_RETRACT%%%DIO:
+#B[1]%+X0000%DIOR_SYNC%%%DIO: Flag to enable SFC program
+#B[1]%+X0000%dioResetJog2Run%%%T=run reset SFC on DIOS_JOG2RUN, DIOS_RUN2JOG
+#B[1]%+X0000%dioSawRunReq%%%DIO:
+#B[1]%+X0000%dioSawStopReq%%%DIO:
+#B[1]%+X0000%dioSetMapComp%%%DIO: flag to indicate all axes mapped correctly
+#B[1]%+X0000%dioTestProgram%%%Test program flag
+#B[1]%+X0000%dioTestTrackng%%%DIO: used for signaling Opcomp start and begin
+#B[1]%+X0000%dioTrackingEnbld%%%DIO: Enable tracking
+#B[1]%+X0000%dioUseYComp%%%DIO: 
+#B[1]%+X0000%dioUseZComp%%%DIO: Use Z Comp
+#B[1]%+X0000%genCycleOn%%%DIO: T=in cycle, Run mode and seq not stopped or held
+#B[1]%+X0000%mFeedHold%%%CNC:
+#B[1]%+X0000%mSyncDone%%%CNC:
+

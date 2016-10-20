@@ -1,0 +1,44 @@
+# OpenCNC Version 7.3  (DO NOT EDIT THIS LINE)
+
+ m 1
+ q "C:\Program Files\MDSI\7.3\Programs\crtMsg"
+ a "C:\Program Files\MDSI\7.3\Programs\accMsg"
+ s "C:\Program Files\MDSI\7.3\Programs\prioSyms"
+ s "C:\Program Files\MDSI\7.3\Machines\SpltRobot\SpltBot.sym"
+ v "C:\Program Files\MDSI\7.3\Machines\SpltRobot\serVars.var"
+
+ p "C:\Program Files\MDSI\7.3\Programs\intPciMechatrolink2.rtss"  -retries 3 -io_total 74 -MechatrolinkServoNoErrorCode 0
+
+ p "C:\Program Files\MDSI\7.3\Programs\ioPciMechatrolink2.rtss" -io_start 0 -io_end 1
+
+ p "C:\Program Files\MDSI\7.3\Programs\ioEnetAutoDirect" -node 192.168.11.2 -io_start 2 -io_end 73 -retries 3 -timeout_ms 6
+ 
+ #p "C:\Program Files\MDSI\7.3\Programs\ioEnetAutoDirect_SRT" -node 192.168.11.2 -io_start 0 -io_end 73 -retries 3 -timeout_ms 6
+ 
+ p "C:\Program Files\MDSI\7.3\Programs\varGroup" -c "C:\Program Files\MDSI\7.3\Machines\SpltRobot\VarGroupControl.txt"
+ p "C:\Program Files\MDSI\7.3\Programs\isaCalc" -dio "C:\Program Files\MDSI\7.3\Machines\SpltRobot\Spltdio" -msg "C:\Program Files\MDSI\7.3\Machines\SpltRobot\Spltmsg"
+ p "C:\Program Files\MDSI\7.3\Programs\movCalc" -j 0
+ p "C:\Program Files\MDSI\7.3\Programs\movCalc" -j 1
+ p "C:\Program Files\MDSI\7.3\Programs\movCalc" -j 2
+ p "C:\Program Files\MDSI\7.3\Programs\seqCalc" -j 0
+ p "C:\Program Files\MDSI\7.3\Programs\seqCalc" -j 1
+ p "C:\Program Files\MDSI\7.3\Programs\seqCalc" -j 2
+ p "C:\Program Files\MDSI\7.3\Programs\blkCalc" -vb -j 0
+ #p "C:\Program Files\MDSI\7.3\Programs\blkCalc" -vb -j 1
+ #p "C:\Program Files\MDSI\7.3\Programs\blkCalc" -vb -j 2
+ p "C:\Program Files\MDSI\7.3\Programs\oprDisp"
+ p "C:\Program Files\MDSI\7.3\Programs\oprOff"
+ p "C:\Program Files\MDSI\7.3\Programs\oprProg"
+ b
+ t "C:\Program Files\MDSI\7.3\Programs\stdGMMill"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\SpltBot.tun"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\SAxis_Gain.tun"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\LAxis_Gain.tun"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\UAxis_Gain.tun"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\RAxis_Gain.tun"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\BAxis_Gain.tun"
+ t "C:\Program Files\MDSI\7.3\Machines\SpltRobot\TAxis_Gain.tun"
+
+ g
+ q "C:\Program Files\MDSI\7.3\Programs\winPad"
+ q "C:\Program Files\MDSI\7.3\Programs\winMdiMode"

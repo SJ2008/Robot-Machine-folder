@@ -1,0 +1,19 @@
+# OpenCNC Version 7.3  (DO NOT EDIT THIS LINE)
+#
+#### Axis Tuning Tool Tune File - 5/6/2014 6:08:47 PM ####
+[accMsg]
+axFErrGain[4]           10.0000000000000000
+axIntegClip[4]          0.0000000000000000
+axIntegGain[4]          0.0000000000000000
+axDampingGain[4]        0.0000000000000000
+axDampingGainDF[4]        0.0000000000000000
+axDerivativeGain[4]        0.0000000000000000
+axFFOn[4]               1
+axFFGain[4]             0.05              
+axFFInputGainP2[4]      0.0000000000000000
+axFFInputGainP1[4]      0.0000000000000000
+axFFInputGain00[4]      20229.1372777832000000
+axFFInputGainM1[4]      -19554.3733212436000000
+axFFInputGainM2[4]      0.0000000000000000
+axFFOutputGainM1[4]     0.0000000000000000
+axFFOutputGainM2[4]     0.0000000000000000

@@ -1,0 +1,37 @@
+# OpenCNC Version 7.3  (DO NOT EDIT THIS LINE)
+0:StartUp:GROUPSTART
+0:Start OpenCNC:"C:\Program Files\MDSI\7.3\Programs\startup": -vvv -t 90 -f "C:\Program Files\MDSI\7.3\Machines\SpltRobot\SpltBot.ost"
+0:Operator Display:"C:\Program Files\MDSI\7.3\Machines\SpltRobot\RobotSpliter.exe":@
+3:Significant Events:"C:\Program Files\MDSI\7.3\Programs\sevCalc":-f "C:\Program Files\MDSI\7.3\Significant Events\sevControl" -deleteAfterDays 30
+0:StartUp:GROUPEND
+1:ShutDown:GROUPSTART
+3:Display Shutdown:"C:\Program Files\MDSI\7.3\Machines\SpltRobot\KillGui.bat":@
+1:ShutDown:GROUPEND
+0:Message Display:"C:\Program Files\MDSI\7.3\Programs\winMsg":@
+0:Position Display:"C:\Program Files\MDSI\7.3\Programs\winPos":@
+0:Operator Panel:"C:\Program Files\MDSI\7.3\Programs\winGen":@ -f "C:\Program Files\MDSI\7.3\Machines\SpltRobot\SpltBot.gen"
+0:Program Editor:"C:\Program Files\MDSI\7.3\Programs\winProg":@ 
+0:Fixtures:"C:\Program Files\MDSI\7.3\Programs\winFix":@
+0:Modals Display:"C:\Program Files\MDSI\7.3\Programs\winModals":@
+0:WinVar:"C:\Program Files\MDSI\7.3\Programs\winVar":@ -u
+0:WinFeShow:"C:\Program Files\MDSI\7.3\Programs\winFeShow":@
+0:WinDataTool:"C:\Program Files\MDSI\7.3\Programs\winDataTool":@ -u -b 2000000
+0:WinSevView:"C:\Program Files\MDSI\7.3\Programs\winSevView":@
+0:WinDioIn:"C:\Program Files\MDSI\7.3\Programs\winDioIn":@
+0:WinPlot:"C:\Program Files\MDSI\7.3\Programs\winPlot":@
+1:Tune Programs:GROUPSTART
+1:WinDioOut:"C:\Program Files\MDSI\7.3\Programs\winDioOut":@
+1:WinAnalogIn:"C:\Program Files\MDSI\7.3\Programs\winAnaIn":@ -force
+1:WinAnalogOut:"C:\Program Files\MDSI\7.3\Programs\winAnaOut":@ -force
+1:WinAxTune:"C:\Program Files\MDSI\7.3\Programs\winAxTune":@
+1:Tune Programs:GROUPEND
+0:WinDioIn force:"C:\Program Files\MDSI\7.3\Programs\winDioIn":@ -force
+0:WinDioOut force:"C:\Program Files\MDSI\7.3\Programs\winDioOut":@ -force
+1:ISaGRAF Monitor:START:"C:\Program Files\MDSI\7.3\Programs\wisaker.exe":-s=1 -t=1100
+0:Stop Machine:MACHINE_STOP:
+0:Authority Level...:AUTHORITY:
+0:Move...:MOVE:
+0:About...:ABOUT:
+0:Exit:EXIT:
+1:7C6A6M7@6L6E:PASSWORD
+3:3@3F3D3E3G:PASSWORD:Jarvis Service
